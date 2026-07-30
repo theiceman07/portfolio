@@ -397,7 +397,7 @@ class App {
     this.gl = this.renderer.gl;
     this.gl.clearColor(0, 0, 0, 0);
     this.container.appendChild(this.gl.canvas);
-    this.raycast = new Raycast(this.gl);
+    this.raycast = new Raycast();
     this.mouse = new Vec2();
   }
   createCamera() {
