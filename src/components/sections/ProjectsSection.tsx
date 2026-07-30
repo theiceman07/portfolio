@@ -4,6 +4,7 @@ import { projects } from "@/lib/data";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { ScrollReveal, RevealItem } from "@/components/ui/ScrollReveal";
+import ScrollStack, { ScrollStackItem } from "@/components/ui/ScrollStack";
 
 export function ProjectsSection() {
   return (
@@ -20,12 +21,14 @@ export function ProjectsSection() {
             />
           </RevealItem>
 
-          <div className="space-y-8 md:space-y-12">
-            {projects.map((project) => (
-              <RevealItem key={project.id}>
-                <ProjectCard project={project} />
-              </RevealItem>
-            ))}
+          <div className="space-y-8 md:space-y-0">
+            <ScrollStack useWindowScroll={true} itemDistance={100} itemScale={0.03} itemStackDistance={30} baseScale={0.85}>
+              {projects.map((project) => (
+                <ScrollStackItem key={project.id}>
+                  <ProjectCard project={project} />
+                </ScrollStackItem>
+              ))}
+            </ScrollStack>
           </div>
         </ScrollReveal>
       </div>

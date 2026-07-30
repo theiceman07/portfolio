@@ -7,6 +7,7 @@ import {
 } from "@/lib/data";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal, RevealItem } from "@/components/ui/ScrollReveal";
+import TiltedCard from "@/components/ui/TiltedCard";
 
 const categoryLabels: Record<InterestCategory, string> = {
   sport: "SPORT",
@@ -52,32 +53,34 @@ export function InterestsSection() {
             {interestMosaic.map((item) => {
               const style = interestCategoryStyles[item.category];
               return (
-                <RevealItem
+                  <RevealItem
                   key={item.id}
                   className={`${item.span}`}
                 >
-                  <div
-                    className={`group glass-panel relative flex h-full flex-col justify-between overflow-hidden rounded-sm border p-4 transition-all duration-500 ${style.accent}`}
-                    data-cursor="hover"
-                  >
-                    <div className="flex items-start justify-between">
-                      <span className="font-mono text-[10px] text-steel/50 transition-opacity duration-300 group-hover:opacity-0" aria-hidden>
-                        {style.icon}
-                      </span>
-                      <span className="rounded border border-glass-border px-1.5 py-0.5 font-mono text-[8px] tracking-widest text-steel/50 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                        {categoryLabels[item.category]}
-                      </span>
-                    </div>
-                    
-                    <div className="relative mt-4">
-                      <div className="font-mono text-xs leading-tight text-[rgba(220,218,240,0.9)] transition-all duration-500 group-hover:-translate-y-2 md:text-sm">
-                        {item.label}
+                  <TiltedCard rotateAmplitude={12} scaleOnHover={1.05} containerHeight="100%" containerWidth="100%">
+                    <div
+                      className={`group glass-panel relative flex h-full w-full flex-col justify-between overflow-hidden rounded-sm border p-4 transition-all duration-500 ${style.accent}`}
+                      data-cursor="hover"
+                    >
+                      <div className="flex items-start justify-between">
+                        <span className="font-mono text-[10px] text-steel/50 transition-opacity duration-300 group-hover:opacity-0" aria-hidden>
+                          {style.icon}
+                        </span>
+                        <span className="rounded border border-glass-border px-1.5 py-0.5 font-mono text-[8px] tracking-widest text-steel/50 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                          {categoryLabels[item.category]}
+                        </span>
                       </div>
-                      <div className="absolute left-0 top-full font-sans text-[10px] tracking-wide text-steel opacity-0 transition-all duration-500 group-hover:-translate-y-2 group-hover:opacity-100">
-                        {item.literal}
+                      
+                      <div className="relative mt-4">
+                        <div className="font-mono text-xs leading-tight text-[rgba(220,218,240,0.9)] transition-all duration-500 group-hover:-translate-y-2 md:text-sm">
+                          {item.label}
+                        </div>
+                        <div className="absolute left-0 top-full font-sans text-[10px] tracking-wide text-steel opacity-0 transition-all duration-500 group-hover:-translate-y-2 group-hover:opacity-100">
+                          {item.literal}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </TiltedCard>
                 </RevealItem>
               );
             })}

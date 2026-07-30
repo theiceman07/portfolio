@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal, RevealItem } from "@/components/ui/ScrollReveal";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { useReducedMotion } from "@/hooks/useMotion";
+import CircularGallery from "@/components/ui/CircularGallery";
 
 export function PhotographySection() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -31,8 +32,20 @@ export function PhotographySection() {
             />
           </RevealItem>
 
-          {/* Masonry-style grid using CSS columns on larger screens */}
-          <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
+          {/* CircularGallery WebGL (Hidden on mobile) */}
+          <div className="hidden h-[600px] w-full md:block">
+            <CircularGallery
+              items={photographyItems.map((p) => ({ image: p.src, text: p.caption }))}
+              bend={3}
+              textColor="#ffffff"
+              borderRadius={0.05}
+              scrollEase={0.02}
+              onItemClick={(index) => setLightboxIndex(index)}
+            />
+          </div>
+
+          {/* Masonry-style grid (Visible on mobile, sr-only on desktop) */}
+          <div className="columns-1 gap-4 sm:columns-2 md:sr-only">
             {photographyItems.map((photo, index) => (
               <RevealItem key={photo.id} className="mb-4 break-inside-avoid">
                 <button
@@ -47,12 +60,11 @@ export function PhotographySection() {
                       index % 3 === 0 ? "aspect-[4/5]" : index % 3 === 1 ? "aspect-square" : "aspect-[3/4]"
                     }`}
                   >
-                    <Image
+                    {/* Using standard <img> tag for the sr-only fallback to avoid next/image double-fetching optimized vs raw URLs. */}
+                    <img
                       src={photo.src}
                       alt={photo.alt}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className={`object-cover ${
+                      className={`h-full w-full object-cover ${
                         reducedMotion
                           ? ""
                           : "transition-transform duration-500 group-hover:scale-105"

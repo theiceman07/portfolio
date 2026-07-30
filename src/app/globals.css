@@ -67,9 +67,15 @@ h1, h2, h3, h4, h5, h6 {
 
 @layer utilities {
   .glass-panel {
-    @apply border border-glass-border bg-glass-bg;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    @apply border border-glass-border bg-[rgba(10,10,15,0.6)] transition-all duration-500;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-panel:hover,
+  a.glass-panel:hover,
+  button.glass-panel:hover {
+    @apply -translate-y-1 border-accent/30 shadow-[0_0_40px_-10px_rgba(168,200,232,0.15)];
   }
 
   .text-balance {
