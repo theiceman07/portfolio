@@ -17,44 +17,6 @@ interface ProjectCardProps {
   project: ProjectData;
 }
 
-const categoryStyles: Record<string, { border: string; glow: string; text: string; bg: string; borderLeft: string }> = {
-  "risk-intelligence": { 
-    border: "border-t border-t-amber-500/30", 
-    glow: "group-hover:shadow-[0_0_40px_-10px_rgba(245,158,11,0.25)] group-hover:border-amber-500/30", 
-    text: "bg-gradient-to-br from-amber-500/80 to-amber-200/20 text-transparent bg-clip-text",
-    bg: "bg-amber-500/10 border-amber-500/30 text-amber-400",
-    borderLeft: "border-l-amber-500/50 text-amber-100/90"
-  },
-  "blockchain-viz": { 
-    border: "border-t border-t-purple-500/30", 
-    glow: "group-hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.25)] group-hover:border-purple-500/30", 
-    text: "bg-gradient-to-br from-purple-500/80 to-purple-200/20 text-transparent bg-clip-text",
-    bg: "bg-purple-500/10 border-purple-500/30 text-purple-400",
-    borderLeft: "border-l-purple-500/50 text-purple-100/90"
-  },
-  "fastf1-undercut": { 
-    border: "border-t border-t-red-500/30", 
-    glow: "group-hover:shadow-[0_0_40px_-10px_rgba(239,68,68,0.25)] group-hover:border-red-500/30", 
-    text: "bg-gradient-to-br from-red-500/80 to-red-200/20 text-transparent bg-clip-text",
-    bg: "bg-red-500/10 border-red-500/30 text-red-400",
-    borderLeft: "border-l-red-500/50 text-red-100/90"
-  },
-  "fraud-detection": { 
-    border: "border-t border-t-emerald-500/30", 
-    glow: "group-hover:shadow-[0_0_40px_-10px_rgba(16,185,129,0.25)] group-hover:border-emerald-500/30", 
-    text: "bg-gradient-to-br from-emerald-500/80 to-emerald-200/20 text-transparent bg-clip-text",
-    bg: "bg-emerald-500/10 border-emerald-500/30 text-emerald-400",
-    borderLeft: "border-l-emerald-500/50 text-emerald-100/90"
-  },
-  "restaurant-rec": { 
-    border: "border-t border-t-cyan-500/30", 
-    glow: "group-hover:shadow-[0_0_40px_-10px_rgba(6,182,212,0.25)] group-hover:border-cyan-500/30", 
-    text: "bg-gradient-to-br from-cyan-500/80 to-cyan-200/20 text-transparent bg-clip-text",
-    bg: "bg-cyan-500/10 border-cyan-500/30 text-cyan-400",
-    borderLeft: "border-l-cyan-500/50 text-cyan-100/90"
-  },
-};
-
 const defaultStyle = {
   border: "border-t border-t-accent/30",
   glow: "group-hover:shadow-[0_0_40px_-10px_rgba(168,200,232,0.25)] group-hover:border-accent/30",
@@ -64,7 +26,7 @@ const defaultStyle = {
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const style = categoryStyles[project.id] || defaultStyle;
+  const style = defaultStyle;
 
   return (
     <article className={`group rounded-sm border border-glass-border bg-[rgba(10,10,15,0.6)] backdrop-blur-[20px] transition-all duration-500 hover:-translate-y-1 ${style.border} ${style.glow}`}>

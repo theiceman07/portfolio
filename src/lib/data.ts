@@ -67,6 +67,9 @@ export const skills = [
   "Scikit-learn",
   "Data Visualization",
   "Time Series Analysis",
+  "React",
+  "TypeScript",
+  "SQL",
 ] as const;
 
 export const experiences = [
@@ -108,13 +111,14 @@ export const experiences = [
     platform: "Coimbatore",
     period: "Jun 2025 – Jul 2025 (2 months)",
     type: "real",
-    summary: "Created digital content and visual assets for GrooveGami, leveraging graphic design tools to produce on-brand marketing and social media materials.",
+    summary: "Spearheaded the creation of engaging digital content and visual assets for GrooveGami across multiple digital platforms. Leveraged advanced graphic design principles to produce high-performing, on-brand marketing materials that elevated social media presence and drove user engagement.",
     details: [
-      "Designed visual content and marketing collateral using Canva and graphic design tools",
-      "Produced on-brand digital assets for social media channels and campaigns",
-      "Collaborated with the team on content strategy and creative direction",
+      "Designed dynamic visual content, infographics, and marketing collateral using Canva and modern graphic design tools.",
+      "Produced and scheduled on-brand digital assets for social media channels, optimizing formats for maximum reach.",
+      "Collaborated with cross-functional teams to define content strategy, creative direction, and brand guidelines.",
+      "Analyzed engagement metrics to iterate on visual campaigns, ensuring alignment with target demographics."
     ],
-    tags: ["Graphic Design", "Canva", "Content Strategy"],
+    tags: ["Graphic Design", "Canva", "Content Strategy", "Digital Marketing", "Visual Storytelling"],
   },
   {
     id: "gs-risk",
@@ -279,6 +283,25 @@ export const protosemUpdates = [
     type: "development",
     date: "Week 1",
   },
+  { id: "week-2", title: "Week 2: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "research", date: "Week 2" },
+  { id: "week-3", title: "Week 3: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "development", date: "Week 3" },
+  { id: "week-4", title: "Week 4: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "design", date: "Week 4" },
+  { id: "week-5", title: "Week 5: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "testing", date: "Week 5" },
+  { id: "week-6", title: "Week 6: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "research", date: "Week 6" },
+  { id: "week-7", title: "Week 7: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "development", date: "Week 7" },
+  { id: "week-8", title: "Week 8: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "design", date: "Week 8" },
+  { id: "week-9", title: "Week 9: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "testing", date: "Week 9" },
+  { id: "week-10", title: "Week 10: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "research", date: "Week 10" },
+  { id: "week-11", title: "Week 11: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "development", date: "Week 11" },
+  { id: "week-12", title: "Week 12: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "design", date: "Week 12" },
+  { id: "week-13", title: "Week 13: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "testing", date: "Week 13" },
+  { id: "week-14", title: "Week 14: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "research", date: "Week 14" },
+  { id: "week-15", title: "Week 15: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "development", date: "Week 15" },
+  { id: "week-16", title: "Week 16: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "design", date: "Week 16" },
+  { id: "week-17", title: "Week 17: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "testing", date: "Week 17" },
+  { id: "week-18", title: "Week 18: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "research", date: "Week 18" },
+  { id: "week-19", title: "Week 19: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "development", date: "Week 19" },
+  { id: "week-20", title: "Week 20: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "design", date: "Week 20" },
 ] as const;
 
 /** Mosaic interest tiles — span controls grid size for playful layout */

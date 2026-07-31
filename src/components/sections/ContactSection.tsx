@@ -13,7 +13,7 @@ export function ContactSection() {
         <ScrollReveal>
           <RevealItem>
             <SectionHeading
-              number="10"
+              number="09"
               label="Contact"
               title={
                 <>

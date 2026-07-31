@@ -8,23 +8,25 @@ import { ScrollReveal, RevealItem } from "@/components/ui/ScrollReveal";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { useReducedMotion } from "@/hooks/useMotion";
 import CircularGallery from "@/components/ui/CircularGallery";
+import { useLoading } from "@/components/providers/LoadingProvider";
 
 export function PhotographySection() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const reducedMotion = useReducedMotion();
+  const { reportWebGLReady } = useLoading();
   const active = lightboxIndex !== null ? photographyItems[lightboxIndex] : null;
 
   return (
     <section
       id="photography"
-      className="relative section-padding pb-32"
+      className="relative section-padding"
       aria-labelledby="photography-heading"
     >
       <div className="mx-auto max-w-7xl">
         <ScrollReveal stagger={0.08}>
           <RevealItem>
             <SectionHeading
-              number="09"
+              number="08"
               label="Photography"
               title="Through the lens"
               subtitle="Certificate of Appreciation · The Art of Film and Media"
@@ -41,6 +43,7 @@ export function PhotographySection() {
               borderRadius={0.05}
               scrollEase={0.02}
               onItemClick={(index) => setLightboxIndex(index)}
+              onInitialized={reportWebGLReady}
             />
           </div>
 

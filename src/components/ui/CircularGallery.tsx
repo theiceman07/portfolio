@@ -587,6 +587,7 @@ interface CircularGalleryProps {
   scrollSpeed?: number;
   scrollEase?: number;
   onItemClick?: (index: number) => void;
+  onInitialized?: () => void;
 }
 
 export default function CircularGallery({
@@ -598,7 +599,8 @@ export default function CircularGallery({
   fontUrl,
   scrollSpeed = 2,
   scrollEase = 0.05,
-  onItemClick
+  onItemClick,
+  onInitialized
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -617,6 +619,12 @@ export default function CircularGallery({
         scrollEase,
         onItemClick
       });
+      if (onInitialized) {
+        // Wait a frame for WebGL to actually paint
+        requestAnimationFrame(() => {
+          onInitialized();
+        });
+      }
     });
 
     return () => {

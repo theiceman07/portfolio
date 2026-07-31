@@ -25,6 +25,14 @@ export function HeroSection() {
         
         item.style.opacity = "1";
         item.style.transform = "translateY(0)";
+        
+        // Remove transition after it completes so it doesn't fight the parallax transform
+        setTimeout(() => {
+          if (item) {
+            item.style.transition = "none";
+            item.style.transitionDelay = "0s";
+          }
+        }, 1500 + index * 150);
       });
     }
 
@@ -68,7 +76,7 @@ export function HeroSection() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative z-[1] flex min-h-screen items-center section-padding pb-32 pt-32"
+      className="relative z-[1] flex min-h-screen items-center section-padding pt-32"
     >
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <p className="hero-anim mono-label mb-8">

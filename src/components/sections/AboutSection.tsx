@@ -6,7 +6,7 @@ import { ScrollReveal, RevealItem } from "@/components/ui/ScrollReveal";
 
 export function AboutSection() {
   return (
-    <section id="about" className="relative section-padding pb-32" aria-labelledby="about-heading">
+    <section id="about" className="relative section-padding" aria-labelledby="about-heading">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
           <RevealItem>

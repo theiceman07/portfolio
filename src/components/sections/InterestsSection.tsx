@@ -18,12 +18,12 @@ const categoryLabels: Record<InterestCategory, string> = {
 
 export function InterestsSection() {
   return (
-    <section id="interests" className="relative section-padding pb-32" aria-labelledby="interests-heading">
+    <section id="interests" className="relative section-padding" aria-labelledby="interests-heading">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal stagger={0.05}>
           <RevealItem>
             <SectionHeading
-              number="08"
+              number="07"
               label="Interests"
               title={
                 <>

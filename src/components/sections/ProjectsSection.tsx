@@ -8,7 +8,7 @@ import ScrollStack, { ScrollStackItem } from "@/components/ui/ScrollStack";
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="relative section-padding pb-32" aria-labelledby="projects-heading">
+    <section id="projects" className="relative section-padding" aria-labelledby="projects-heading">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal stagger={0.15}>
           <RevealItem>
@@ -17,7 +17,7 @@ export function ProjectsSection() {
               label="Projects"
               title="Case studies"
               subtitle="Each project proves a capability — not a thumbnail, a thesis."
-              className="mb-16"
+              className="mb-8"
             />
           </RevealItem>
 

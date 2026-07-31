@@ -109,7 +109,7 @@ function GraphImage({
 
 export function GitHubSectionClient({ repos, profile }: GitHubSectionProps) {
   return (
-    <section id="github" className="relative section-padding pb-32" aria-labelledby="github-heading">
+    <section id="github" className="relative section-padding" aria-labelledby="github-heading">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal stagger={0.1}>
           <RevealItem>

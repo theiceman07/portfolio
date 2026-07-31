@@ -72,6 +72,17 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-backdrop-filter: blur(20px);
   }
 
+  .hide-scrollbar::-webkit-scrollbar,
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .hide-scrollbar,
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
   .glass-panel:hover,
   a.glass-panel:hover,
   button.glass-panel:hover {
@@ -83,7 +94,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .section-padding {
-    @apply px-6 py-24 md:px-12 md:py-32 lg:px-20;
+    @apply px-6 py-12 md:px-12 md:py-20 lg:px-20;
   }
 
   .mono-label {

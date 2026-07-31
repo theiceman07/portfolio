@@ -7,6 +7,8 @@ import { DataTicker } from "@/components/ui/DataTicker";
 import { Navigation } from "@/components/layout/Navigation";
 import { siteConfig } from "@/lib/data";
 import { LineWavesBackground } from "@/components/ui/LineWavesBackground";
+import { LoadingProvider } from "@/components/providers/LoadingProvider";
+import { LoadingScreen } from "@/components/ui/LoadingScreen";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,13 +46,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrains.variable} ${space.variable}`}>
       <body className="bg-background text-foreground antialiased">
-        <SmoothScrollProvider>
-          <LineWavesBackground />
-          <CustomCursor />
-          <Navigation />
-          <main className="relative z-[1]">{children}</main>
-          <DataTicker />
-        </SmoothScrollProvider>
+        <LoadingProvider>
+          <LoadingScreen />
+          <SmoothScrollProvider>
+            <LineWavesBackground />
+            <CustomCursor />
+            <Navigation />
+            <main className="relative z-[1]">{children}</main>
+            <DataTicker />
+          </SmoothScrollProvider>
+        </LoadingProvider>
       </body>
     </html>
   );
