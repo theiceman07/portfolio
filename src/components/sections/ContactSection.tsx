@@ -72,15 +72,20 @@ export function ContactSection() {
                   </li>
                 </ul>
 
-                <a
-                  href={siteConfig.resumePath}
-                  download
-                  className="focus-ring mt-8 inline-flex items-center gap-2 rounded-sm border border-accent/30 bg-accent-muted px-5 py-3 font-mono text-xs tracking-wider text-accent transition-colors hover:border-accent/50 hover:bg-accent/20"
-                  data-cursor="hover"
-                >
-                  ↓ Download Resume (PDF)
-                </a>
-                {/* TODO: Add /public/resume.pdf with your actual resume */}
+                <div className="mt-12 rounded-sm border border-glass-border bg-background/50 p-5">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span className="font-mono text-[10px] tracking-widest text-foreground">CURRENT STATUS</span>
+                  </div>
+                  <p className="font-mono text-xs text-[rgba(220,218,240,0.7)] leading-relaxed">
+                    Actively exploring quantitative finance, ML, and software engineering internship opportunities for 2026.
+                  </p>
+                </div>
+
+
               </div>
 
               {/* Simple mailto form */}
