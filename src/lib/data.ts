@@ -272,18 +272,24 @@ export const protosemUpdates = [
   {
     id: "week-0",
     title: "Week 0: Self-Evaluation & Perspectives",
-    subtitle: "Completed the 16 Personalities assessment and presented a Zen Pencils comic that personally resonated with me.",
+    subtitle: "Completed 16Personalities (ENTP-A) to understand team dynamics. Presented a Zen Pencils comic on overcoming procrastination through action. Ran the Marshmallow Challenge to practice rapid prototyping, failing fast, and rebuilding under tight constraints.",
     type: "research",
     date: "Week 0",
   },
   {
     id: "week-1",
     title: "Week 1: 5S Principles & Web Deployment",
-    subtitle: "Learned the 5S workplace organization method (Sort, Set in order, Shine) and built & deployed a live portfolio website.",
+    subtitle: "Ran a 5S sort on hardware components to optimize organization and usability. Kicked off the development of this portfolio website from scratch to document the ongoing prototype development journey.",
     type: "development",
     date: "Week 1",
   },
-  { id: "week-2", title: "Week 2: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "research", date: "Week 2" },
+  { 
+    id: "week-2", 
+    title: "Week 2: Paradigms & Design Thinking", 
+    subtitle: "Covered programming paradigms, flowcharts, Python basics, and OOP. Developed interactive projects using Scratch and MIT App Inventor. Participated in an applied design thinking session based on IDEO principles.", 
+    type: "research", 
+    date: "Week 2" 
+  },
   { id: "week-3", title: "Week 3: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "development", date: "Week 3" },
   { id: "week-4", title: "Week 4: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "design", date: "Week 4" },
   { id: "week-5", title: "Week 5: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "testing", date: "Week 5" },
