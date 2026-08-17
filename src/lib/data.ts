@@ -290,7 +290,13 @@ export const protosemUpdates = [
     type: "research", 
     date: "Week 2" 
   },
-  { id: "week-3", title: "Week 3: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "development", date: "Week 3" },
+  { 
+    id: "week-3", 
+    title: "Week 3: Rapid Prototyping and Development", 
+    subtitle: "Installed Fusion 360, explored all the features and tools till an intermediate level. Made a clay model and took photos with different views, used those as canvas and built and rendered it in fusion. Made sure the scale and weight are similar. Then we made a bracket lever. Very informative week and had a lot of fun exploring.", 
+    type: "development", 
+    date: "Week 3" 
+  },
   { id: "week-4", title: "Week 4: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "design", date: "Week 4" },
   { id: "week-5", title: "Week 5: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "testing", date: "Week 5" },
   { id: "week-6", title: "Week 6: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "research", date: "Week 6" },
