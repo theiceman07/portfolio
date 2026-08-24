@@ -297,7 +297,13 @@ export const protosemUpdates = [
     type: "development", 
     date: "Week 3" 
   },
-  { id: "week-4", title: "Week 4: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "design", date: "Week 4" },
+  { 
+    id: "week-4", 
+    title: "Week 4: Laser Cutting, Animation & 3D Printing", 
+    subtitle: "Moved to laser cutting using a CNC machine on black acrylic, designing the art on RDWorks V8. Created an assembly animation for a 3-DOF robotic arm in Fusion 360. Selected an LDR sensor module, designed its enclosure in Fusion, and exported it to Bambu Studio for 3D printing.", 
+    type: "development", 
+    date: "Week 4" 
+  },
   { id: "week-5", title: "Week 5: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "testing", date: "Week 5" },
   { id: "week-6", title: "Week 6: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "research", date: "Week 6" },
   { id: "week-7", title: "Week 7: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "development", date: "Week 7" },
