@@ -304,7 +304,7 @@ export const protosemUpdates = [
     type: "development", 
     date: "Week 4" 
   },
-  { id: "week-5", title: "Week 5: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "testing", date: "Week 5" },
+  { id: "week-5", title: "Week 5: UI/UX & Problem Statements", subtitle: "Started UI/UX session, formed teams, exchanged requirements for an OTT website, built and hosted it. Assigned problem statements, conducted user discovery through Google Forms, and compiled reports. Brainstormed the alpha team problem statement, drafted a systematic development report, and aligned with the startup's needs.", type: "development", date: "Week 5" },
   { id: "week-6", title: "Week 6: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "research", date: "Week 6" },
   { id: "week-7", title: "Week 7: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "development", date: "Week 7" },
   { id: "week-8", title: "Week 8: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "design", date: "Week 8" },
