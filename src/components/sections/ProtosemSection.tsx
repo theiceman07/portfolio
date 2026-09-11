@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback, UIEvent, KeyboardEvent } from "react";
+import Link from "next/link";
 import { protosemUpdates } from "@/lib/data";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal, RevealItem } from "@/components/ui/ScrollReveal";
@@ -131,6 +132,17 @@ export function ProtosemSection() {
                     <div className="flex-grow pt-2">
                       <h3 className="text-xl font-light text-white mb-3 md:text-2xl">{update.title}</h3>
                       <p className="font-mono text-xs text-[rgba(220,218,240,0.8)] leading-relaxed">{update.subtitle}</p>
+                      {"href" in update && (
+                        <div className="mt-4">
+                          <Link 
+                            href={(update as any).href} 
+                            className="inline-flex items-center gap-2 text-xs font-mono text-accent hover:text-white transition-colors group relative z-20"
+                          >
+                            {(update as any).linkLabel || "View Details"}
+                            <span className="group-hover:translate-x-1 transition-transform">→</span>
+                          </Link>
+                        </div>
+                      )}
                     </div>
                     <div className="text-[10px] text-accent/60 font-mono self-end pt-4 mt-auto">
                       WK {String(i).padStart(2, "0")}

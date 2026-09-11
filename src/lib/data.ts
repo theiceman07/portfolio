@@ -306,7 +306,15 @@ export const protosemUpdates = [
   },
   { id: "week-5", title: "Week 5: UI/UX & Problem Statements", subtitle: "Started UI/UX session, formed teams, exchanged requirements for an OTT website, built and hosted it. Assigned problem statements, conducted user discovery through Google Forms, and compiled reports. Brainstormed the alpha team problem statement, drafted a systematic development report, and aligned with the startup's needs.", type: "development", date: "Week 5" },
   { id: "week-6", title: "Week 6: Microcontrollers & Soldering", subtitle: "Had a two-day session on microcontrollers and microprocessors, covering in-depth architecture and concepts of embedded systems. Learned how to solder and successfully soldered a 555 timer IC chip with LEDs, resistors, and a capacitor.", type: "development", date: "Week 6" },
-  { id: "week-7", title: "Week 7: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "development", date: "Week 7" },
+  { 
+    id: "week-7", 
+    title: "Week 7: IoT & Connectivity", 
+    subtitle: "Hands-on sessions using Arduino IDE and ESP32. Task 1: writing code to make the inbuilt LED on the ESP32 blink on command from a website using HTTP. Task 2: controlling a 230W bulb connected to a relay using MQTT. Task 3: controlling the same bulb using voice activation via IFTTT.", 
+    type: "development", 
+    date: "Week 7",
+    href: "/iot-session",
+    linkLabel: "View IoT Session Details"
+  },
   { id: "week-8", title: "Week 8: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "design", date: "Week 8" },
   { id: "week-9", title: "Week 9: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "testing", date: "Week 9" },
   { id: "week-10", title: "Week 10: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "research", date: "Week 10" },
