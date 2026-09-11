@@ -37,7 +37,7 @@ export default function IoTSessionPage() {
                 </div>
                 <h3 className="text-2xl font-light text-white mb-3">HTTP LED Control</h3>
                 <p className="font-mono text-sm text-[rgba(220,218,240,0.8)] leading-relaxed">
-                  We wrote code to connect the ESP32 to a local Wi-Fi network and spun up a basic web server. By sending HTTP GET requests from a web browser, we were able to remotely toggle the ESP32's onboard LED on and off.
+                  We wrote code to connect the ESP32 to a local Wi-Fi network and spun up a basic web server. By sending HTTP GET requests from a web browser, we were able to remotely toggle the ESP32&apos;s onboard LED on and off.
                 </p>
               </div>
             </RevealItem>
