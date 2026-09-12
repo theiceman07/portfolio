@@ -16,7 +16,7 @@ const TaskSection = dynamic(() => import('@/components/sections/iot/TaskSection'
 
 export default function IoTPortfolio() {
   return (
-    <div className="min-h-screen bg-black overflow-hidden selection:bg-accent/30 selection:text-white">
+    <div className="min-h-screen relative z-10 selection:bg-accent/30 selection:text-white">
       <IoTHero />
       <ProjectOverviewCards />
 

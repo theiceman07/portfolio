@@ -4,7 +4,7 @@ import { Download, ExternalLink, Mail, FileText, Code2, Database } from 'lucide-
 
 export function ResourcesFooter() {
   return (
-    <footer className="pt-24 pb-12 border-t border-white/10 bg-black">
+    <footer className="pt-24 pb-12 border-t border-white/10 bg-background/50 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           

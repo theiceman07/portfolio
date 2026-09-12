@@ -12,7 +12,7 @@ export function IoTHero() {
 
   return (
     <section className="relative pt-32 pb-20 min-h-[70vh] flex flex-col justify-center border-b border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/20 via-black to-black opacity-50" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-accent/20 via-transparent to-transparent opacity-50" />
       
       <div className="max-w-6xl mx-auto px-4 md:px-6 relative z-10 w-full">
         <Link 
