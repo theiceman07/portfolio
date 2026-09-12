@@ -40,7 +40,7 @@ export const task4Content = {
       gradient: "from-green-600 to-teal-600",
 
       intro: {
-        description: "The hardware layer of the Forge system. The ESP32 microcontroller continuously monitors temperature, humidity, and light levels using the DHT11 sensor and LDR module. It reads data every 2 seconds, applies noise-smoothing algorithms, and streams results to Firebase Realtime Database. Simultaneously, it listens for commands from the web dashboard and controls a 230V relay module based on either manual user input or automatic light-based thresholds.",
+        description: "The hardware layer of the Forge system. The ESP32 microcontroller continuously monitors temperature, humidity, and light levels using the DHT11 sensor and LDR module. It reads data every 2 seconds, applies noise-smoothing algorithms, and streams results to Firebase Realtime Database. Simultaneously, it listens for commands from the web dashboard and controls a 230V relay module based on either manual user input or automatic light-based thresholds. We used the **`DHT.h`** library to easily interface with the temperature/humidity sensor and the **`Firebase_ESP_Client.h`** library to handle the complex underlying REST API calls and websocket connections required to communicate with Google's Firebase cloud. These software libraries abstract away low-level networking, making it possible to stream live data and control home appliances remotely in real-time.",
         learningObjectives: [
           "Interface analog and digital sensors (DHT11, LDR) with a microcontroller",
           "Understand ESP32's 12-bit ADC behavior (0–4095) versus traditional Arduino",
@@ -376,7 +376,7 @@ Temp: 22.4C | Humidity: 60% | LDR: 1100`,
       gradient: "from-blue-600 to-cyan-600",
 
       intro: {
-        description: "The cloud backbone of Forge. Firebase Realtime Database serves as the central hub for all sensor data and control commands. Data flows bidirectionally: ESP32 pushes sensor readings every 2 seconds and listens for manual commands from the dashboard. The web client reads live sensor streams and publishes toggle commands. Firebase Authentication secures access with email/password signup and Google Sign-In.",
+        description: "The cloud backbone of Forge. Firebase Realtime Database serves as the central hub for all sensor data and control commands. **Firebase Realtime Database (RTDB)** is a cloud-hosted NoSQL database that lets you store and sync data between users in realtime. Instead of typical HTTP requests, it uses data synchronization—every time data changes, any connected device receives that update within milliseconds. Data flows bidirectionally: ESP32 pushes sensor readings every 2 seconds and listens for manual commands from the dashboard. The web client reads live sensor streams and publishes toggle commands. **Firebase Authentication** secures access with email/password signup and Google Sign-In, acting as an identity provider to ensure only authorized users can view the home's sensor data or trigger the appliances.",
         learningObjectives: [
           "Implement real-time bidirectional data sync between hardware and web",
           "Understand Firebase Realtime Database structure and security rules",
@@ -561,7 +561,7 @@ Data pushed to /sensorData`,
       gradient: "from-purple-600 to-pink-600",
 
       intro: {
-        description: "The user-facing control center for Forge. A responsive 3-page web application (Landing, Login/Signup, Dashboard) built with vanilla HTML/CSS/JavaScript and hosted on Firebase Hosting. The dashboard displays live sensor data in real-time cards, provides a toggle switch for manual bulb control, includes a mode selector (manual/automatic), a threshold slider for light sensitivity, and a 50-row historical data table with CSV export functionality.",
+        description: "The user-facing control center for Forge. A responsive 3-page web application (Landing, Login/Signup, Dashboard) built with vanilla HTML/CSS/JavaScript and hosted on **Firebase Hosting**. Firebase Hosting provides fast and secure hosting for web apps, serving content over a global CDN. The dashboard displays live sensor data in real-time cards using the Firebase JavaScript SDK (`firebase/database` and `firebase/auth`). It provides a toggle switch for manual bulb control, includes a mode selector (manual/automatic), a threshold slider for light sensitivity, and a 50-row historical data table with CSV export functionality. This software architecture is widely used in modern IoT dashboards and SaaS platforms for its low latency and scalability.",
         learningObjectives: [
           "Build a full-stack web application with user authentication",
           "Implement real-time UI updates using Firebase listeners",

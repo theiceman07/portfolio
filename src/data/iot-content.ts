@@ -6,7 +6,7 @@ export const iotContent: IoTContent = {
       id: "task1",
       number: "TASK 01",
       title: "HTTP LED Control",
-      description: "We wrote code to connect the ESP32 to a local Wi-Fi network and spun up a basic web server. By sending HTTP GET requests from a web browser, we were able to remotely toggle the ESP32's onboard LED on and off.",
+      description: "We wrote code to connect the ESP32 to a local Wi-Fi network and spun up a basic web server. By sending HTTP GET requests from a web browser, we were able to remotely toggle the ESP32's onboard LED on and off. **HTTP (Hypertext Transfer Protocol)** is the foundation of data communication for the World Wide Web. It's a request-response protocol used to fetch resources or trigger actions. We used the `WiFi.h` library to connect the ESP32 to the network and the `WebServer.h` library to handle incoming HTTP requests on port 80. These libraries abstract the complex networking stack into easy-to-use functions. This HTTP approach is used in home automation for local, fast, and secure device control without relying on external internet connectivity.",
       colorVar: "var(--accent)",
       learningObjectives: [
         "Understand HTTP protocol and REST API design",
@@ -176,7 +176,7 @@ LED OFF`,
       id: "task2",
       number: "TASK 02",
       title: "MQTT Cloud Dashboard with Relay Control",
-      description: "Moving from simple HTTP to a publish-subscribe model, we implemented an MQTT client on the ESP32. It subscribed to a specific topic, and upon receiving a trigger message, activated a relay module connected to a 230W incandescent bulb.",
+      description: "Moving from simple HTTP to a publish-subscribe model, we implemented an MQTT client on the ESP32. It subscribed to a specific topic, and upon receiving a trigger message, activated a relay module connected to a 230W incandescent bulb. **MQTT (Message Queuing Telemetry Transport)** is a lightweight messaging protocol designed for constrained devices and low-bandwidth networks. Unlike HTTP's request-response model, MQTT uses a publish/subscribe architecture via a central broker (like Adafruit IO), making it ideal for real-time IoT applications. We used the `AdafruitIO_WiFi.h` library, which simplifies connecting to the Adafruit IO platform and MQTT broker. This software platform acts as the dashboard and broker, handling the routing of messages. MQTT is widely used in industrial IoT, remote monitoring, and smart home ecosystems.",
       colorVar: "var(--foreground)",
       learningObjectives: [
         "Remote access (anywhere on internet)",
@@ -376,7 +376,7 @@ Relay de-energized, NO contact open
       id: "task3",
       number: "TASK 03",
       title: "Google Assistant Voice Control via IFTTT",
-      description: "To add a layer of user interaction, we integrated IFTTT (If This Then That). We linked Google Assistant to Webhooks, allowing us to send an MQTT message by speaking a trigger phrase, which seamlessly turned the 230W bulb on and off.",
+      description: "To add a layer of user interaction, we integrated IFTTT (If This Then That). We linked Google Assistant to Webhooks, allowing us to send an MQTT message by speaking a trigger phrase, which seamlessly turned the 230W bulb on and off. **IFTTT** is a web-based automation software platform that connects different apps, services, and devices using simple conditional statements called 'applets'. We used its **Webhooks** service to bridge the gap between Google Assistant's voice recognition and our Adafruit IO dashboard. When a specific phrase is recognized, IFTTT sends an HTTP POST request (webhook) to Adafruit IO, which then publishes an MQTT message to the ESP32. This powerful combination of cloud software is used to create seamless, voice-controlled smart home experiences without writing complex natural language processing code.",
       colorVar: "var(--steel)",
       learningObjectives: [
         "IFTTT automation workflows and applet creation",
