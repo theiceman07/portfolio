@@ -4,31 +4,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Clock, Code, Wifi } from 'lucide-react';
 
-export function ProjectOverviewCards() {
-  const cards = [
-    {
-      task: "Task 1",
-      title: "LED Web Control Interface",
-      tech: "HTTP, HTML/CSS/JS, WiFi",
-      duration: "Week 1",
-      color: "var(--accent)"
-    },
-    {
-      task: "Task 2",
-      title: "MQTT Cloud Dashboard",
-      tech: "MQTT, Adafruit IO, Relay",
-      duration: "Week 2",
-      color: "var(--foreground)"
-    },
-    {
-      task: "Task 3",
-      title: "Google Assistant Voice",
-      tech: "IFTTT, Webhooks, Voice API",
-      duration: "Week 3",
-      color: "var(--steel)"
-    }
-  ];
+import { ProjectOverviewCardData } from '@/types/iot';
 
+interface ProjectOverviewCardsProps {
+  overview: ProjectOverviewCardData[];
+}
+
+export function ProjectOverviewCards({ overview }: ProjectOverviewCardsProps) {
   return (
     <section className="py-20 bg-black/40 border-b border-white/5 relative z-10">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
@@ -38,7 +20,7 @@ export function ProjectOverviewCards() {
         </div>
         
         <div className="grid md:grid-cols-3 gap-6">
-          {cards.map((card, idx) => (
+          {overview.map((card, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -68,11 +50,11 @@ export function ProjectOverviewCards() {
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-sm text-gray-400">
                   <Code className="w-4 h-4" />
-                  <span>{card.tech}</span>
+                  <span>{card.tech || card.technology}</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-gray-400">
                   <Clock className="w-4 h-4" />
-                  <span>{card.duration}</span>
+                  <span>{card.duration || card.complexity}</span>
                 </div>
               </div>
             </motion.div>

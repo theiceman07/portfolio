@@ -1,8 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { Download, ExternalLink, Mail, FileText, Code2, Database } from 'lucide-react';
+import { ResourceLinkData } from '@/types/iot';
 
-export function ResourcesFooter() {
+interface ResourcesFooterProps {
+  resources: ResourceLinkData[];
+}
+
+export function ResourcesFooter({ resources }: ResourcesFooterProps) {
   return (
     <footer className="pt-24 pb-12 border-t border-white/10 bg-background/50 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
@@ -37,20 +42,19 @@ export function ResourcesFooter() {
               Downloads
             </h4>
             <div className="flex flex-col gap-3">
-              <button className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-left text-gray-300 hover:text-white group">
-                <Code2 className="w-4 h-4 group-hover:text-accent transition-colors" />
-                <div className="flex-1">
-                  <div className="text-sm font-medium">Source Code (ZIP)</div>
-                  <div className="text-xs text-gray-500">All Arduino sketches</div>
-                </div>
-              </button>
-              <button className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-left text-gray-300 hover:text-white group">
-                <FileText className="w-4 h-4 group-hover:text-accent transition-colors" />
-                <div className="flex-1">
-                  <div className="text-sm font-medium">ESP32 Datasheet</div>
-                  <div className="text-xs text-gray-500">PDF Reference</div>
-                </div>
-              </button>
+              <ul className="space-y-3">
+                {resources.map((resource, idx) => (
+                  <li key={idx}>
+                    <Link href={resource.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-left text-gray-300 hover:text-white group">
+                      {resource.type === 'Datasheet' ? <FileText className="w-4 h-4 group-hover:text-accent transition-colors" /> :
+                       resource.type === 'Documentation' ? <ExternalLink className="w-4 h-4 group-hover:text-accent transition-colors" /> :
+                       resource.type === 'Tool' ? <Database className="w-4 h-4 group-hover:text-accent transition-colors" /> :
+                       <Code2 className="w-4 h-4 group-hover:text-accent transition-colors" />}
+                      <span>{resource.title}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 

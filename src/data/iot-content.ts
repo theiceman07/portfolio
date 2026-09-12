@@ -534,9 +534,67 @@ Relay energized, NO contact closed
     ]
   },
   useCases: [
-    { title: "Smart Home Automation", description: "Control lights, appliances, security. What you built can be deployed in any home.", icon: "Home" },
-    { title: "Industrial IoT", description: "Factory monitoring, equipment control. Same principles used in industrial systems.", icon: "Factory" },
-    { title: "Building Management", description: "HVAC, lighting, access control. Office and residential buildings use these systems.", icon: "Building" },
-    { title: "Remote Monitoring", description: "Environmental sensors, alerts. Monitor conditions from anywhere.", icon: "Activity" }
+    {
+      title: "Smart Lighting Automation",
+      description: "Automatically turn on lights in dark rooms, off when bright. Reduce energy waste by responding to actual ambient light conditions.",
+      icon: "Lightbulb"
+    },
+    {
+      title: "Environmental Monitoring",
+      description: "Track temperature and humidity in sensitive spaces: server rooms, greenhouses, wine cellars, museums. Historical data enables trend analysis and compliance auditing.",
+      icon: "Activity"
+    },
+    {
+      title: "Remote Building Management",
+      description: "Centralized control of multiple IoT devices across buildings. Adjust thresholds, modes, and appliances from a single web dashboard.",
+      icon: "Building"
+    },
+    {
+      title: "Energy Efficiency Auditing",
+      description: "CSV export of historical sensor data enables analysis of energy consumption patterns, peak usage times, and optimization opportunities.",
+      icon: "Zap"
+    }
+  ],
+  projectOverview: [
+    {
+      task: "Task 1",
+      title: "LED Web Control Interface",
+      tech: "HTTP, HTML/CSS/JS, WiFi",
+      duration: "Week 1",
+      color: "var(--accent)"
+    },
+    {
+      task: "Task 2",
+      title: "MQTT Cloud Dashboard",
+      tech: "MQTT, Adafruit IO, Relay",
+      duration: "Week 2",
+      color: "var(--foreground)"
+    },
+    {
+      task: "Task 3",
+      title: "Google Assistant Voice",
+      tech: "IFTTT, Webhooks, Voice API",
+      duration: "Week 3",
+      color: "var(--steel)"
+    }
+  ],
+  comparison: {
+    aspectsTable: [
+      { aspect: "Range", task1: "Local WiFi", task2: "Internet", task3: "Anywhere" },
+      { aspect: "Control", task1: "Browser", task2: "Dashboard", task3: "Voice" },
+      { aspect: "Protocol", task1: "HTTP", task2: "MQTT", task3: "Voice API" },
+      { aspect: "Latency", task1: "<150ms", task2: "<1s", task3: "2-3s" },
+      { aspect: "Scalability", task1: "Limited", task2: "100+ devs", task3: "Unlimited" },
+      { aspect: "Cost", task1: "Free", task2: "Free", task3: "Free" },
+      { aspect: "Complexity", task1: "Low", task2: "Medium", task3: "High" },
+    ]
+  },
+  resources: [
+    { type: "Datasheet", title: "Project Documentation PDF", url: "#" },
+    { type: "Datasheet", title: "ESP32 Datasheet", url: "#" },
+    { type: "Datasheet", title: "DHT11 Specifications", url: "#" },
+    { type: "Code", title: "Download Task 1 (.zip)", url: "#" },
+    { type: "Code", title: "Download Task 2 (.zip)", url: "#" },
+    { type: "Code", title: "Download Task 3 (.zip)", url: "#" }
   ]
 };

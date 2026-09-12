@@ -2,18 +2,13 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ComparisonAspectData } from '@/types/iot';
 
-export function ComparisonMatrix() {
-  const tableData = [
-    { aspect: "Range", task1: "Local WiFi", task2: "Internet", task3: "Anywhere" },
-    { aspect: "Control", task1: "Browser", task2: "Dashboard", task3: "Voice" },
-    { aspect: "Protocol", task1: "HTTP", task2: "MQTT", task3: "Voice API" },
-    { aspect: "Latency", task1: "<150ms", task2: "<1s", task3: "2-3s" },
-    { aspect: "Scalability", task1: "Limited", task2: "100+ devs", task3: "Unlimited" },
-    { aspect: "Cost", task1: "Free", task2: "Free", task3: "Free" },
-    { aspect: "Complexity", task1: "Low", task2: "Medium", task3: "High" },
-  ];
+interface ComparisonMatrixProps {
+  data: ComparisonAspectData[];
+}
 
+export function ComparisonMatrix({ data }: ComparisonMatrixProps) {
   return (
     <section className="py-24 border-y border-white/5 bg-black/20">
       <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
@@ -44,20 +39,28 @@ export function ComparisonMatrix() {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
-              {tableData.map((row, idx) => (
+            <tbody>
+              {data.map((row, idx) => (
                 <motion.tr 
                   key={idx}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: idx * 0.05 }}
-                  className="hover:bg-white/5 transition-colors group"
+                  transition={{ delay: idx * 0.1 }}
+                  className="border-b border-white/5 hover:bg-white/5 transition-colors"
                 >
-                  <td className="p-6 text-gray-300 font-medium group-hover:text-white transition-colors">{row.aspect}</td>
-                  <td className="p-6 text-gray-400 font-mono text-sm">{row.task1}</td>
-                  <td className="p-6 text-gray-400 font-mono text-sm">{row.task2}</td>
-                  <td className="p-6 text-gray-400 font-mono text-sm">{row.task3}</td>
+                  <td className="py-4 px-6 text-left font-medium text-gray-300">
+                    {row.aspect}
+                  </td>
+                  <td className="py-4 px-6 text-accent">
+                    {row.task1 || row.section1}
+                  </td>
+                  <td className="py-4 px-6 text-foreground">
+                    {row.task2 || row.section2}
+                  </td>
+                  <td className="py-4 px-6 text-steel">
+                    {row.task3 || row.section3}
+                  </td>
                 </motion.tr>
               ))}
             </tbody>
