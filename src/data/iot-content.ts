@@ -580,13 +580,13 @@ Relay energized, NO contact closed
   ],
   comparison: {
     aspectsTable: [
-      { aspect: "Range", task1: "Local WiFi", task2: "Internet", task3: "Anywhere" },
-      { aspect: "Control", task1: "Browser", task2: "Dashboard", task3: "Voice" },
-      { aspect: "Protocol", task1: "HTTP", task2: "MQTT", task3: "Voice API" },
-      { aspect: "Latency", task1: "<150ms", task2: "<1s", task3: "2-3s" },
-      { aspect: "Scalability", task1: "Limited", task2: "100+ devs", task3: "Unlimited" },
-      { aspect: "Cost", task1: "Free", task2: "Free", task3: "Free" },
-      { aspect: "Complexity", task1: "Low", task2: "Medium", task3: "High" },
+      { aspect: "Range", task1: "Local WiFi", task2: "Internet", task3: "Anywhere", task4: "Local & Internet" },
+      { aspect: "Control", task1: "Browser", task2: "Dashboard", task3: "Voice", task4: "Dashboard & Auto" },
+      { aspect: "Protocol", task1: "HTTP", task2: "MQTT", task3: "Voice API", task4: "Firebase RTDB" },
+      { aspect: "Latency", task1: "<150ms", task2: "<1s", task3: "2-3s", task4: "~1-2s" },
+      { aspect: "Scalability", task1: "Limited", task2: "100+ devs", task3: "Unlimited", task4: "Unlimited" },
+      { aspect: "Cost", task1: "Free", task2: "Free", task3: "Free", task4: "Free Tier" },
+      { aspect: "Complexity", task1: "Low", task2: "Medium", task3: "High", task4: "High (Full Stack)" },
     ]
   },
   resources: [

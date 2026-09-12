@@ -22,31 +22,13 @@ export const task4Content = {
 
   projectOverview: [
     {
-      task: "1",
-      title: "ESP32 Environmental Monitoring",
-      technology: "ESP32, DHT11, LDR, Arduino IDE, C++",
+      task: "Task 4",
+      title: "Forge Smart Home",
+      technology: "ESP32, Firebase, Web Dashboard",
       complexity: "Intermediate",
       status: "✅ Complete",
-      icon: "📊",
+      icon: "🏠",
       color: "from-green-500 to-teal-500"
-    },
-    {
-      task: "2",
-      title: "Firebase Cloud Backend",
-      technology: "Firebase Realtime Database, Firebase Auth, Firebase Hosting",
-      complexity: "Intermediate",
-      status: "✅ Complete",
-      icon: "☁️",
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      task: "3",
-      title: "Web Dashboard & Control",
-      technology: "HTML5, CSS3, JavaScript ES6, Firebase JS SDK",
-      complexity: "Intermediate",
-      status: "✅ Complete",
-      icon: "🎛️",
-      color: "from-purple-500 to-pink-500"
     }
   ],
 

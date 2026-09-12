@@ -82,9 +82,11 @@ export interface ComparisonAspectData {
   task1?: string;
   task2?: string;
   task3?: string;
+  task4?: string;
   section1?: string; // task4 uses section1/2/3 instead of task1/2/3
   section2?: string;
   section3?: string;
+  section4?: string;
 }
 
 export interface ResourceLinkData {

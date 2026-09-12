@@ -19,7 +19,7 @@ export function ProjectOverviewCards({ overview }: ProjectOverviewCardsProps) {
           <span className="font-mono text-sm tracking-widest text-gray-400 uppercase">Project Overview</span>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {overview.map((card, idx) => (
             <motion.div
               key={`${card.task}-${idx}`}

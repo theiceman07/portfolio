@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+
 import { ComparisonAspectData } from '@/types/iot';
 
 interface ComparisonMatrixProps {
@@ -37,6 +38,12 @@ export function ComparisonMatrix({ data }: ComparisonMatrixProps) {
                     <span className="text-white font-mono tracking-widest text-sm">TASK 3</span>
                   </div>
                 </th>
+                <th className="p-6">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#10b981' }} />
+                    <span className="text-white font-mono tracking-widest text-sm">TASK 4</span>
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -60,6 +67,9 @@ export function ComparisonMatrix({ data }: ComparisonMatrixProps) {
                   </td>
                   <td className="py-4 px-6 text-steel">
                     {row.task3 || row.section3}
+                  </td>
+                  <td className="py-4 px-6 text-emerald-400">
+                    {row.task4 || row.section4}
                   </td>
                 </motion.tr>
               ))}

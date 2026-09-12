@@ -19,7 +19,7 @@ export default function IoTPortfolio() {
     ...(iotContent.projectOverview?.map(mapProjectOverviewCard) || []), 
     ...task4Content.projectOverview.map(mapProjectOverviewCard)
   ];
-  const comparison = [...(iotContent.comparison?.aspectsTable || []), ...task4Content.comparison.aspectsTable];
+  const comparison = [...(iotContent.comparison?.aspectsTable || [])];
   const techOutcomes = [...iotContent.outcomes.technical, ...task4Content.outcomes.technical];
   const hwOutcomes = [...iotContent.outcomes.hardware, ...task4Content.outcomes.hardware];
   const sysOutcomes = [...iotContent.outcomes.systems, ...task4Content.outcomes.systems];

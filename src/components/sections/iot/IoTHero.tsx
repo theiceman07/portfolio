@@ -48,6 +48,9 @@ export function IoTHero() {
             <button onClick={() => scrollTo('task3')} className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors font-medium">
               Task 3: Voice Control
             </button>
+            <button onClick={() => scrollTo('4')} className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors font-medium">
+              Task 4: Forge Smart Home
+            </button>
           </div>
         </motion.div>
       </div>
