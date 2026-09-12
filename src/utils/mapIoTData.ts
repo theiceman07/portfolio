@@ -15,9 +15,18 @@ export function mapProjectOverviewCard(data: any): ProjectOverviewCardData {
 }
 
 export function mapTaskData(data: any): TaskData {
+  const getSectionLabel = (id: string | number) => {
+    const numId = Number(id);
+    if (numId <= 3) return `TASK 0${numId}`;
+    if (numId === 4) return 'TASK 04.1 - Hardware';
+    if (numId === 5) return 'TASK 04.2 - Cloud';
+    if (numId === 6) return 'TASK 04.3 - Dashboard';
+    return `TASK ${numId}`;
+  };
+
   return {
     id: String(data.id),
-    number: data.number || `TASK 0${data.id}`,
+    number: data.number || getSectionLabel(data.id),
     title: data.title,
     description: data.intro?.description || data.description || '',
     colorVar: data.colorVar || data.gradient || 'var(--accent)',

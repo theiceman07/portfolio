@@ -22,7 +22,7 @@ export function ProjectOverviewCards({ overview }: ProjectOverviewCardsProps) {
         <div className="grid md:grid-cols-3 gap-6">
           {overview.map((card, idx) => (
             <motion.div
-              key={idx}
+              key={`${card.task}-${idx}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

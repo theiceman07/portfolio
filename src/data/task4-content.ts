@@ -52,7 +52,7 @@ export const task4Content = {
 
   tasks: [
     {
-      id: 1,
+      id: 4,
       title: "ESP32 Environmental Monitoring & Relay Control",
       icon: "📊",
       gradient: "from-green-600 to-teal-600",
@@ -169,12 +169,12 @@ Relay Control: Firebase listener → GPIO26 (LOW/HIGH) → Relay → Bulb
 
       images: {
         photos: [
-          { src: "/media/task4/photos/esp32_breadboard.jpg", caption: "ESP32 with DHT11 and LDR modules on breadboard" },
-          { src: "/media/task4/photos/relay_wiring.jpg", caption: "5V relay module with mains power connections" },
-          { src: "/media/task4/photos/sensor_closeup.jpg", caption: "DHT11 and LDR sensors connected via GPIO" },
-          { src: "/media/task4/photos/complete_setup.jpg", caption: "Full hardware setup with relay, sensors, and ESP32" }
+          { src: "/media/task4/photos/Screenshot (511).png", caption: "ESP32 with DHT11 and LDR modules on breadboard" },
+          { src: "/media/task4/photos/Screenshot (512).png", caption: "5V relay module with mains power connections" },
+          { src: "/media/task4/photos/Screenshot (513).png", caption: "DHT11 and LDR sensors connected via GPIO" },
+          { src: "/media/task4/photos/Screenshot (514).png", caption: "Full hardware setup with relay, sensors, and ESP32" }
         ],
-        video: "/media/task4/videos/hardware_demo.mp4",
+        video: "/media/task4/videos/t4.mp4",
         videoCaption: "Hardware demo: manual relay control and sensor readings in Serial Monitor"
       },
 
@@ -388,7 +388,7 @@ Temp: 22.4C | Humidity: 60% | LDR: 1100`,
     },
 
     {
-      id: 2,
+      id: 5,
       title: "Firebase Cloud Backend & Real-Time Sync",
       icon: "☁️",
       gradient: "from-blue-600 to-cyan-600",
@@ -459,10 +459,10 @@ Temp: 22.4C | Humidity: 60% | LDR: 1100`,
 
       images: {
         photos: [
-          { src: "/media/task4/photos/firebase_console.jpg", caption: "Firebase Realtime Database structure in console" },
-          { src: "/media/task4/photos/firebase_rules.jpg", caption: "Security rules ensuring authenticated access" }
+          { src: "/media/task4/photos/Screenshot (515).png", caption: "Firebase Realtime Database structure in console" },
+          { src: "/media/task4/photos/Screenshot (516).png", caption: "Security rules ensuring authenticated access" }
         ],
-        video: "/media/task4/videos/firebase_sync.mp4",
+        video: "/media/task4/videos/t4.mp4",
         videoCaption: "Real-time data flow: ESP32 pushes sensors, dashboard toggles relay, live sync between both"
       },
 
@@ -573,7 +573,7 @@ Data pushed to /sensorData`,
     },
 
     {
-      id: 3,
+      id: 6,
       title: "Web Dashboard & User Interface",
       icon: "🎛️",
       gradient: "from-purple-600 to-pink-600",
@@ -623,12 +623,12 @@ Data pushed to /sensorData`,
 
       images: {
         photos: [
-          { src: "/media/task4/photos/dashboard_full.jpg", caption: "Complete dashboard showing all sensor data and controls" },
-          { src: "/media/task4/photos/dashboard_mobile.jpg", caption: "Responsive mobile view of dashboard" },
-          { src: "/media/task4/photos/login_page.jpg", caption: "Login/Signup page with email and Google Sign-In" },
-          { src: "/media/task4/photos/data_table.jpg", caption: "Historical sensor data table with 50 rows" }
+          { src: "/media/task4/photos/Screenshot (517).png", caption: "Complete dashboard showing all sensor data and controls" },
+          { src: "/media/task4/photos/Screenshot (518).png", caption: "Responsive mobile view of dashboard" },
+          { src: "/media/task4/photos/Screenshot (519).png", caption: "Login/Signup page with email and Google Sign-In" },
+          { src: "/media/task4/photos/Screenshot (520).png", caption: "Historical sensor data table with 50 rows" }
         ],
-        video: "/media/task4/videos/dashboard_demo.mp4",
+        video: "/media/task4/videos/t4.mp4",
         videoCaption: "Dashboard walkthrough: real-time sensors, manual toggle, automatic mode switch, threshold slider, CSV export"
       },
 

@@ -9,9 +9,9 @@ interface ResourcesFooterProps {
 
 export function ResourcesFooter({ resources }: ResourcesFooterProps) {
   return (
-    <footer className="pt-24 pb-12 border-t border-white/10 bg-background/50 backdrop-blur-sm">
+    <footer className="pt-16 pb-8 border-t border-white/10 bg-background/50 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
           
           {/* Quick Stats */}
           <div className="space-y-6">
@@ -41,11 +41,11 @@ export function ResourcesFooter({ resources }: ResourcesFooterProps) {
               <Download className="w-5 h-5 text-accent" />
               Downloads
             </h4>
-            <div className="flex flex-col gap-3">
-              <ul className="space-y-3">
+            <div className="flex flex-col gap-2">
+              <ul className="space-y-2">
                 {resources.map((resource, idx) => (
                   <li key={idx}>
-                    <Link href={resource.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-left text-gray-300 hover:text-white group">
+                    <Link href={resource.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-left text-gray-300 hover:text-white group">
                       {resource.type === 'Datasheet' ? <FileText className="w-4 h-4 group-hover:text-accent transition-colors" /> :
                        resource.type === 'Documentation' ? <ExternalLink className="w-4 h-4 group-hover:text-accent transition-colors" /> :
                        resource.type === 'Tool' ? <Database className="w-4 h-4 group-hover:text-accent transition-colors" /> :
