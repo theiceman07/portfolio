@@ -1,72 +1,60 @@
-import Link from "next/link";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ScrollReveal, RevealItem } from "@/components/ui/ScrollReveal";
-import { ExpandableTaskCard } from "@/components/ui/ExpandableTaskCard";
+import { IoTHero } from "@/components/sections/iot/IoTHero";
+import { ProjectOverviewCards } from "@/components/sections/iot/ProjectOverviewCards";
+import { ComparisonMatrix } from "@/components/sections/iot/ComparisonMatrix";
+import { FeatureGrid } from "@/components/sections/iot/FeatureGrid";
+import { ResourcesFooter } from "@/components/sections/iot/ResourcesFooter";
+import { iotContent } from "@/data/iot-content";
+import dynamic from 'next/dynamic';
 
-export default function IoTSessionPage() {
+const TaskSection = dynamic(() => import('@/components/sections/iot/TaskSection'), {
+  loading: () => (
+    <div className="py-32 flex justify-center items-center">
+      <div className="w-8 h-8 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  )
+});
+
+export default function IoTPortfolio() {
   return (
-    <div className="min-h-screen pt-32 pb-20 section-padding relative z-10">
-      <div className="mx-auto max-w-4xl px-4 md:px-0">
-        <ScrollReveal stagger={0.1}>
-          <RevealItem>
-            <Link 
-              href="/#protosem" 
-              className="inline-flex items-center gap-2 text-sm font-mono text-steel hover:text-white transition-colors group mb-12"
-            >
-              <span className="group-hover:-translate-x-1 transition-transform">←</span>
-              Back to Portfolio
-            </Link>
-          </RevealItem>
-          
-          <RevealItem>
-            <SectionHeading
-              number="07"
-              label="IoT & Connectivity"
-              title="Hands-on ESP32 & Arduino IDE"
-              className="mb-12"
-            />
-          </RevealItem>
+    <div className="min-h-screen bg-black overflow-hidden selection:bg-accent/30 selection:text-white">
+      <IoTHero />
+      <ProjectOverviewCards />
 
-          <div className="grid gap-6">
-            <RevealItem>
-              <ExpandableTaskCard
-                taskNumber="TASK 01"
-                colorVar="var(--accent)"
-                title="HTTP LED Control"
-                description="We wrote code to connect the ESP32 to a local Wi-Fi network and spun up a basic web server. By sending HTTP GET requests from a web browser, we were able to remotely toggle the ESP32's onboard LED on and off."
-                videoSrc="/media/iot/videos/task1_demo.mp4"
-                imageFolder="/media/iot/photos/task1_web_interface"
-                imageCount={7}
-              />
-            </RevealItem>
-
-            <RevealItem>
-              <ExpandableTaskCard
-                taskNumber="TASK 02"
-                colorVar="var(--foreground)"
-                title="MQTT Relay Switch"
-                description="Moving from simple HTTP to a publish-subscribe model, we implemented an MQTT client on the ESP32. It subscribed to a specific topic, and upon receiving a trigger message, activated a relay module connected to a 230W incandescent bulb."
-                videoSrc="/media/iot/videos/task2_demo.mp4"
-                imageFolder="/media/iot/photos/task2_mqtt_relay"
-                imageCount={8}
-              />
-            </RevealItem>
-
-            <RevealItem>
-              <ExpandableTaskCard
-                taskNumber="TASK 03"
-                colorVar="var(--steel)"
-                title="IFTTT Voice Activation"
-                description="To add a layer of user interaction, we integrated IFTTT (If This Then That). We linked Google Assistant to Webhooks, allowing us to send an MQTT message by speaking a trigger phrase, which seamlessly turned the 230W bulb on and off."
-                videoSrc="/media/iot/videos/task3_demo.mp4"
-                imageFolder="/media/iot/photos/task3_voice_control"
-                imageCount={7}
-              />
-            </RevealItem>
+      {iotContent.tasks.map((task) => (
+        <TaskSection key={task.id} task={task} />
+      ))}
+      
+      <ComparisonMatrix />
+      
+      <section className="py-24">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <div className="mb-20">
+            <h2 className="text-3xl font-light text-white mb-2">Technical Outcomes</h2>
+            <p className="text-gray-400 mb-8">Core skills and protocols mastered</p>
+            <FeatureGrid items={iotContent.outcomes.technical} columns={3} />
           </div>
-        </ScrollReveal>
-      </div>
+          
+          <div className="mb-20">
+            <h2 className="text-3xl font-light text-white mb-2">Hardware Outcomes</h2>
+            <p className="text-gray-400 mb-8">Electronics and component control</p>
+            <FeatureGrid items={iotContent.outcomes.hardware} columns={3} />
+          </div>
+          
+          <div className="mb-20">
+            <h2 className="text-3xl font-light text-white mb-2">System Outcomes</h2>
+            <p className="text-gray-400 mb-8">Architecture and end-to-end design</p>
+            <FeatureGrid items={iotContent.outcomes.systems} columns={3} />
+          </div>
+          
+          <div>
+            <h2 className="text-3xl font-light text-white mb-2">Real-World Use Cases</h2>
+            <p className="text-gray-400 mb-8">Where these technologies are applied</p>
+            <FeatureGrid items={iotContent.useCases} columns={2} />
+          </div>
+        </div>
+      </section>
+      
+      <ResourcesFooter />
     </div>
   );
 }
-
