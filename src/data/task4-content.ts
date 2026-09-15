@@ -1,5 +1,7 @@
 // data/task4-content.ts
 
+import { esp32Component, dht11Component, ldrComponent, relayComponent } from './iot-content';
+
 export const task4Content = {
   meta: {
     title: "Forge — ESP32 Smart Home Environmental Monitoring & Automation System",
@@ -377,6 +379,8 @@ Temp: 22.4C | Humidity: 60% | LDR: 1100`,
           { metric: "Active-LOW Relay Verified", value: "Confirmed safe before mains", status: "✅" }
         ]
       },
+
+      componentsGallery: [esp32Component, dht11Component, ldrComponent, relayComponent],
 
       learnings: [
         {

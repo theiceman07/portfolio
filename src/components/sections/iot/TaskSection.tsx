@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { TaskData } from '../../../types/iot';
 import { Tabs, Accordion, CodeBlock } from './InteractiveElements';
 import { MediaGallery } from './MediaGallery';
+import { HardwareGallery } from './HardwareGallery';
 import { FeatureGrid } from './FeatureGrid';
 import { CheckCircle2, Activity, Terminal } from 'lucide-react';
 
@@ -80,6 +81,11 @@ export default function TaskSection({ task }: TaskSectionProps) {
             }))}
           />
         </div>
+
+        {/* Hardware Gallery: real photos + pinouts */}
+        {task.componentsGallery && task.componentsGallery.length > 0 && (
+          <HardwareGallery components={task.componentsGallery} taskTitle={task.title} />
+        )}
 
         {/* Wiring Diagram */}
         <div className="mb-16">

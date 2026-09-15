@@ -1,4 +1,158 @@
-import { IoTContent, QuickStatData, DebugProblemData, MetricGroupData, CompetitorData, CTAAudienceData } from '../types/iot';
+import { IoTContent, QuickStatData, DebugProblemData, MetricGroupData, CompetitorData, CTAAudienceData, HardwareComponentData } from '../types/iot';
+
+export const esp32Component: HardwareComponentData = {
+  name: "ESP32 Development Module",
+  category: "Microcontroller",
+  manufacturer: "Espressif Systems",
+  model: "DevKit V4",
+  photos: [
+    {
+      type: "product",
+      imageUrl: "https://components101.com/sites/default/files/component_pin/ESP32-Pinout.png",
+      caption: "ESP32 DevKit V4 top view showing USB port, GPIO pins, and onboard antenna",
+      altText: "ESP32 development board with USB port on one end and two rows of GPIO pins along the edges"
+    },
+    {
+      type: "pinout",
+      imageUrl: "https://components101.com/sites/default/files/component_pin/ESP32-Pinout.png",
+      caption: "Official ESP32 pinout diagram — all 38 GPIO pins labeled",
+      altText: "Full pinout diagram of the ESP32 showing power, ADC, SPI, I2C, and UART pin groups"
+    }
+  ],
+  specifications: [
+    { label: "Processor", value: "Xtensa Dual-Core 32-bit" },
+    { label: "Clock Speed", value: "160 MHz" },
+    { label: "RAM", value: "520 KB SRAM" },
+    { label: "Flash", value: "4 MB" },
+    { label: "WiFi", value: "802.11 b/g/n (2.4 GHz)" },
+    { label: "GPIO Pins", value: "34 total (25 usable)" },
+    { label: "ADC", value: "12-bit (0–4095)" },
+    { label: "Dimensions", value: "49 × 26 × 13 mm" }
+  ],
+  pins: [
+    { pinNumber: "2", name: "GPIO2", function: "Built-in LED", voltage: "3.3V output", notes: "Active HIGH" },
+    { pinNumber: "4", name: "GPIO4", function: "DHT11 data line", voltage: "3.3V I/O", notes: "Needs pull-up resistor" },
+    { pinNumber: "26", name: "GPIO26", function: "Relay control", voltage: "3.3V output", notes: "Active-LOW" },
+    { pinNumber: "34", name: "GPIO34", function: "LDR analog input", voltage: "0–3.3V input", notes: "Input-only ADC pin" }
+  ],
+  usageContext: "The brain of all four tasks — WiFi client, HTTP/MQTT client, and GPIO controller.",
+  datasheetUrl: "https://www.espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf",
+  purchaseUrl: "https://www.amazon.com/ESP32-DEVKITC-32D-Development-Board-ESP-WROOM-32/dp/B09N8RYPV4"
+};
+
+export const relayComponent: HardwareComponentData = {
+  name: "SRD-05VDC-SL-C Relay Module",
+  category: "Actuator / Switching",
+  manufacturer: "Songle",
+  model: "SRD-05VDC-SL-C",
+  photos: [
+    {
+      type: "product",
+      imageUrl: "https://components101.com/sites/default/files/components/5V-Relay-Module.jpg",
+      caption: "5V single-channel relay module — coil and contact terminals visible",
+      altText: "Relay module PCB with a black relay can, screw terminals, and a status LED"
+    },
+    {
+      type: "pinout",
+      imageUrl: "https://components101.com/sites/default/files/components/Relay-Module-Pinout.png",
+      caption: "Relay pinout — VCC, GND, IN, COM, NO, NC",
+      altText: "Diagram labeling the relay module's coil-side and contact-side pins"
+    }
+  ],
+  specifications: [
+    { label: "Coil Voltage", value: "5V DC" },
+    { label: "Coil Current", value: "~70 mA" },
+    { label: "Contact Rating", value: "250V AC / 10A" },
+    { label: "Type", value: "SPDT" },
+    { label: "Switching Time", value: "~10 ms" },
+    { label: "Logic", value: "Active-LOW (this batch)" }
+  ],
+  pins: [
+    { pinNumber: "1", name: "VCC", function: "5V power for the coil" },
+    { pinNumber: "2", name: "GND", function: "Ground reference" },
+    { pinNumber: "3", name: "IN", function: "Control signal from GPIO26", notes: "LOW energizes coil" },
+    { pinNumber: "4", name: "COM", function: "Common contact — wired to mains Live" },
+    { pinNumber: "5", name: "NO", function: "Normally Open — closes when energized" }
+  ],
+  usageContext: "Safely isolates 230V mains from the ESP32's 3.3V logic in Tasks 2 and 4.",
+  datasheetUrl: "https://components101.com/sites/default/files/component_datasheet/Relay%20Datasheet.pdf",
+  purchaseUrl: "https://www.amazon.com/s?k=SRD-05VDC-SL-C+relay+module"
+};
+
+export const dht11Component: HardwareComponentData = {
+  name: "DHT11 Temperature & Humidity Sensor",
+  category: "Sensor",
+  manufacturer: "Aosong",
+  model: "DHT11",
+  photos: [
+    {
+      type: "product",
+      imageUrl: "https://components101.com/sites/default/files/components/DHT11-Humidity-Sensor.jpg",
+      caption: "DHT11 module — blue plastic housing with a 3-pin header",
+      altText: "Small blue DHT11 sensor module with perforated front face and three pins on the back"
+    },
+    {
+      type: "pinout",
+      imageUrl: "https://components101.com/sites/default/files/components/DHT11-Pinout.png",
+      caption: "DHT11 pinout — VCC, DATA, NC, GND",
+      altText: "Diagram of the DHT11's four internal pins with the unused NC pin marked"
+    }
+  ],
+  specifications: [
+    { label: "Temperature Range", value: "0–50°C" },
+    { label: "Temperature Accuracy", value: "±2°C" },
+    { label: "Humidity Range", value: "20–90% RH" },
+    { label: "Humidity Accuracy", value: "±5% RH" },
+    { label: "Min Read Interval", value: "2 seconds" },
+    { label: "Protocol", value: "Custom single-wire digital" }
+  ],
+  pins: [
+    { pinNumber: "1", name: "VCC", function: "Power", voltage: "3.3V" },
+    { pinNumber: "2", name: "DATA", function: "Digital data line to GPIO4", notes: "Requires 4.7–10kΩ pull-up" },
+    { pinNumber: "3", name: "NC", function: "Not connected" },
+    { pinNumber: "4", name: "GND", function: "Ground" }
+  ],
+  usageContext: "Reads temperature and humidity every 2 seconds in Task 4's monitoring loop.",
+  datasheetUrl: "https://components101.com/sites/default/files/component_datasheet/DHT11-Temperature-Sensor.pdf",
+  purchaseUrl: "https://www.amazon.com/s?k=DHT11+sensor+module"
+};
+
+export const ldrComponent: HardwareComponentData = {
+  name: "LDR Light Sensor Module",
+  category: "Sensor",
+  manufacturer: "Generic",
+  model: "LDR + Voltage Divider Module",
+  photos: [
+    {
+      type: "product",
+      imageUrl: "https://components101.com/sites/default/files/components/LDR-Module.jpg",
+      caption: "LDR module — photoresistor on a small PCB with a voltage divider",
+      altText: "Small PCB with a light-dependent resistor dome and four labeled pins"
+    },
+    {
+      type: "pinout",
+      imageUrl: "https://components101.com/sites/default/files/components/LDR-Module-Pinout.png",
+      caption: "LDR module pinout — VCC, GND, AO, DO",
+      altText: "Diagram labeling the LDR module's power, analog output, and digital output pins"
+    }
+  ],
+  specifications: [
+    { label: "Type", value: "Analog light sensor" },
+    { label: "Output Range", value: "0–4095 (12-bit ADC)" },
+    { label: "Behavior", value: "Higher value = darker room" },
+    { label: "Response Time", value: "~100–200 ms" },
+    { label: "Accuracy", value: "Relative, not absolute lux" }
+  ],
+  pins: [
+    { pinNumber: "1", name: "VCC", function: "Power", voltage: "3.3V" },
+    { pinNumber: "2", name: "GND", function: "Ground" },
+    { pinNumber: "3", name: "AO", function: "Analog output to GPIO34" },
+    { pinNumber: "4", name: "DO", function: "Digital output (unused in this project)" }
+  ],
+  usageContext: "Detects ambient brightness for automatic lighting control in Task 4, smoothed with 15-sample averaging.",
+  datasheetUrl: "https://components101.com/sites/default/files/component_datasheet/LDR%20Datasheet.pdf",
+  purchaseUrl: "https://www.amazon.com/s?k=LDR+light+sensor+module"
+};
 
 export const quickStats: QuickStatData[] = [
   { label: "Lines of production code", value: "635", icon: "Code2" },
@@ -277,6 +431,7 @@ LED OFF`,
         videoSrc: "/media/iot/videos/task1_demo.mp4",
         videoCaption: "Full Task 1 demonstration showing web interface controlling LED in real-time"
       },
+      componentsGallery: [esp32Component],
       keyLearnings: [
         {
           title: "HTTP Protocol",
@@ -497,6 +652,7 @@ Relay de-energized, NO contact open
         videoSrc: "/media/iot/videos/task2_demo.mp4",
         videoCaption: "Complete Task 2 workflow - Dashboard toggle → Adafruit IO → ESP32 → Relay → Bulb ON/OFF"
       },
+      componentsGallery: [esp32Component, relayComponent],
       keyLearnings: [
         {
           title: "QoS 0 (Fire & Forget)",

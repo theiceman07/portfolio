@@ -42,6 +42,7 @@ export interface TaskData {
     title: string;
     points: string[];
   }[];
+  componentsGallery?: HardwareComponentData[];
 }
 
 export interface IoTContent {
@@ -132,4 +133,32 @@ export interface ResourceLinkData {
   type: string;
   title: string;
   url: string;
+}
+
+export interface ComponentPhoto {
+  type: 'product' | 'pinout' | 'diagram' | 'closeup' | 'assembled';
+  imageUrl: string;
+  caption: string;
+  altText: string;
+}
+
+export interface ComponentPin {
+  pinNumber: string;
+  name: string;
+  function: string;
+  voltage?: string;
+  notes?: string;
+}
+
+export interface HardwareComponentData {
+  name: string;
+  category: string;
+  manufacturer: string;
+  model?: string;
+  photos: ComponentPhoto[];
+  specifications: { label: string; value: string }[];
+  pins?: ComponentPin[];
+  usageContext: string;
+  datasheetUrl?: string;
+  purchaseUrl?: string;
 }

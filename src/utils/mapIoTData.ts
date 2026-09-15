@@ -63,6 +63,7 @@ export function mapTaskData(data: any): TaskData {
     keyLearnings: (data.learnings || data.keyLearnings || []).map((l: any) => ({
       title: l.title,
       points: l.points || [l.description]
-    }))
+    })),
+    componentsGallery: data.componentsGallery || undefined
   };
 }
