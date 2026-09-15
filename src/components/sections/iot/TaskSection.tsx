@@ -90,14 +90,38 @@ export default function TaskSection({ task }: TaskSectionProps) {
         {/* Wiring Diagram */}
         <div className="mb-16">
           <h3 className="text-2xl font-light text-white mb-6">Wiring Architecture</h3>
-          <div className="p-6 rounded-xl border border-white/10 bg-[#0d1117] overflow-x-auto">
-            <pre className="text-sm font-mono text-emerald-400">
-              <code>{task.wiringDiagram.code}</code>
-            </pre>
-            <p className="mt-4 text-sm text-gray-400 border-t border-white/10 pt-4">
-              {task.wiringDiagram.caption}
-            </p>
-          </div>
+          {task.wiringDiagram.image ? (
+            <div className="rounded-xl border border-white/10 bg-black/30 overflow-hidden">
+              <img
+                src={task.wiringDiagram.image}
+                alt={task.wiringDiagram.caption}
+                className="w-full h-auto"
+                loading="lazy"
+              />
+              <p className="px-6 py-4 text-sm text-gray-400 border-t border-white/10">
+                {task.wiringDiagram.caption}
+              </p>
+              {task.wiringDiagram.code && (
+                <details className="border-t border-white/10">
+                  <summary className="px-6 py-3 text-xs text-gray-500 cursor-pointer hover:text-gray-300 transition-colors select-none">
+                    View raw ASCII schematic
+                  </summary>
+                  <pre className="px-6 pb-6 text-xs font-mono text-emerald-400 overflow-x-auto">
+                    <code>{task.wiringDiagram.code}</code>
+                  </pre>
+                </details>
+              )}
+            </div>
+          ) : (
+            <div className="p-6 rounded-xl border border-white/10 bg-[#0d1117] overflow-x-auto">
+              <pre className="text-sm font-mono text-emerald-400">
+                <code>{task.wiringDiagram.code}</code>
+              </pre>
+              <p className="mt-4 text-sm text-gray-400 border-t border-white/10 pt-4">
+                {task.wiringDiagram.caption}
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Media Gallery */}

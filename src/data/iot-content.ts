@@ -8,13 +8,13 @@ export const esp32Component: HardwareComponentData = {
   photos: [
     {
       type: "product",
-      imageUrl: "https://components101.com/sites/default/files/component_pin/ESP32-Pinout.png",
+      imageUrl: "/media/iot/hardware/esp32-board.svg",
       caption: "ESP32 DevKit V4 top view showing USB port, GPIO pins, and onboard antenna",
       altText: "ESP32 development board with USB port on one end and two rows of GPIO pins along the edges"
     },
     {
       type: "pinout",
-      imageUrl: "https://components101.com/sites/default/files/component_pin/ESP32-Pinout.png",
+      imageUrl: "/media/iot/hardware/esp32-pinout.svg",
       caption: "Official ESP32 pinout diagram — all 38 GPIO pins labeled",
       altText: "Full pinout diagram of the ESP32 showing power, ADC, SPI, I2C, and UART pin groups"
     }
@@ -48,13 +48,13 @@ export const relayComponent: HardwareComponentData = {
   photos: [
     {
       type: "product",
-      imageUrl: "https://components101.com/sites/default/files/components/5V-Relay-Module.jpg",
+      imageUrl: "/media/iot/hardware/relay-board.svg",
       caption: "5V single-channel relay module — coil and contact terminals visible",
       altText: "Relay module PCB with a black relay can, screw terminals, and a status LED"
     },
     {
       type: "pinout",
-      imageUrl: "https://components101.com/sites/default/files/components/Relay-Module-Pinout.png",
+      imageUrl: "/media/iot/hardware/relay-pinout.svg",
       caption: "Relay pinout — VCC, GND, IN, COM, NO, NC",
       altText: "Diagram labeling the relay module's coil-side and contact-side pins"
     }
@@ -87,13 +87,13 @@ export const dht11Component: HardwareComponentData = {
   photos: [
     {
       type: "product",
-      imageUrl: "https://components101.com/sites/default/files/components/DHT11-Humidity-Sensor.jpg",
+      imageUrl: "/media/iot/hardware/dht11-board.svg",
       caption: "DHT11 module — blue plastic housing with a 3-pin header",
       altText: "Small blue DHT11 sensor module with perforated front face and three pins on the back"
     },
     {
       type: "pinout",
-      imageUrl: "https://components101.com/sites/default/files/components/DHT11-Pinout.png",
+      imageUrl: "/media/iot/hardware/dht11-pinout.svg",
       caption: "DHT11 pinout — VCC, DATA, NC, GND",
       altText: "Diagram of the DHT11's four internal pins with the unused NC pin marked"
     }
@@ -125,13 +125,13 @@ export const ldrComponent: HardwareComponentData = {
   photos: [
     {
       type: "product",
-      imageUrl: "https://components101.com/sites/default/files/components/LDR-Module.jpg",
+      imageUrl: "/media/iot/hardware/ldr-board.svg",
       caption: "LDR module — photoresistor on a small PCB with a voltage divider",
       altText: "Small PCB with a light-dependent resistor dome and four labeled pins"
     },
     {
       type: "pinout",
-      imageUrl: "https://components101.com/sites/default/files/components/LDR-Module-Pinout.png",
+      imageUrl: "/media/iot/hardware/ldr-pinout.svg",
       caption: "LDR module pinout — VCC, GND, AO, DO",
       altText: "Diagram labeling the LDR module's power, analog output, and digital output pins"
     }
@@ -336,7 +336,8 @@ export const iotContent: IoTContent = {
 │  No external components needed —         │
 │  resistor and LED are both on-board.     │
 └─────────────────────────────────────────┘`,
-        caption: "Built-in LED circuit - GPIO 2 is internally connected to the LED. No external components needed for this task."
+        caption: "Built-in LED circuit - GPIO 2 is internally connected to the LED. No external components needed for this task.",
+        image: "/media/iot/hardware/task1-wiring.svg"
       },
       gallery: [
         { src: "/media/iot/photos/task1_web_interface/image2.png", caption: "Web interface showing LED in OFF state" },
@@ -528,7 +529,8 @@ LED OFF`,
 │  SAFETY: Only Live is routed through the relay.          │
 │  Neutral is never switched.                              │
 └────────────────────────────────────────────────────────┘`,
-        caption: "High-Voltage Safety Wiring Diagram — verified with a 5V bench signal before any mains connection."
+        caption: "High-Voltage Safety Wiring Diagram — verified with a 5V bench signal before any mains connection.",
+        image: "/media/iot/hardware/task2-wiring.svg"
       },
       gallery: [
         { src: "/media/iot/photos/task2_mqtt_relay/image2.png", caption: "Relay module closeup" },

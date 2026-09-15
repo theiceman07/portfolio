@@ -146,43 +146,32 @@ export const task4Content = {
         }
       ],
 
-      wiringDiagram: `
-┌────────────────────────────────────────────────┐
-│         ESP32 FORGE WIRING DIAGRAM             │
+      wiringDiagram: {
+        image: "/media/iot/hardware/task4-wiring.svg",
+        caption: "Full Forge system: DHT11 + LDR feed the ESP32, which drives the relay and streams to Firebase every 2 seconds.",
+        code: `┌────────────────────────────────────────────────┐
+│         ESP32 FORGE WIRING DIAGRAM              │
 ├────────────────────────────────────────────────┤
-│                                                │
-│  POWER RAIL (3V3 & GND shared via breadboard) │
-│                                                │
-│  ┌─ 3V3 ─┬─ GND ─┐                            │
-│  │       │       │                            │
-│  │   DHT11    LDR Module                       │
-│  │   │ │       │ │                            │
-│  │   ├─ GPIO4  ├─ GPIO34 (Analog In)         │
-│  │   │ (Digital) │                            │
-│  │   └──────────┘                             │
-│  │                                            │
-│  │   Relay Module                             │
-│  │   VCC ─ 5V (from USB adapter)             │
-│  │   GND ─ GND                                │
-│  │   IN  ─ GPIO26 (active-LOW)              │
-│  │       │                                   │
-│  │       └─ Relay Contact (COM)             │
-│  │            │                             │
-│  │       Wall Outlet Live ─┬─ COM            │
-│  │                         │                 │
-│  │       Relay NO ─────────┤ (Normally Open)│
-│  │                         │                 │
-│  │       Bulb Live ────────┘                │
-│  │                                          │
-│  │   [GPIO26 LOW = Relay ON = Bulb ON]    │
-│  │   [GPIO26 HIGH = Relay OFF = Bulb OFF]  │
-│  │                                          │
+│  POWER RAIL (3V3 & GND shared via breadboard)   │
+│                                                  │
+│  DHT11 --- GPIO4  (digital)                     │
+│  LDR   --- GPIO34 (analog / ADC)                │
+│                                                  │
+│  Relay Module                                   │
+│    VCC --- 5V (from USB adapter)                │
+│    GND --- GND                                  │
+│    IN  --- GPIO26 (active-LOW)                  │
+│    COM --- Wall Outlet Live                     │
+│    NO  --- Bulb Live                            │
+│                                                  │
+│  [GPIO26 LOW  = Relay ON  = Bulb ON]            │
+│  [GPIO26 HIGH = Relay OFF = Bulb OFF]           │
 └────────────────────────────────────────────────┘
 
-Temperature/Humidity Stream: DHT11 → GPIO4 → UART → Firebase
-Light Level Stream: LDR → GPIO34 (ADC) → processed → Firebase
-Relay Control: Firebase listener → GPIO26 (LOW/HIGH) → Relay → Bulb
-      `,
+Temperature/Humidity Stream: DHT11 -> GPIO4 -> UART -> Firebase
+Light Level Stream: LDR -> GPIO34 (ADC) -> processed -> Firebase
+Relay Control: Firebase listener -> GPIO26 (LOW/HIGH) -> Relay -> Bulb`
+      },
 
       images: {
         photos: [

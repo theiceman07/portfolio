@@ -18,6 +18,7 @@ export interface TaskData {
   wiringDiagram: {
     code: string;
     caption: string;
+    image?: string;
   };
   gallery: {
     src: string;
