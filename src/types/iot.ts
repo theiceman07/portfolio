@@ -75,6 +75,45 @@ export interface ProjectOverviewCardData {
   color: string;
   icon?: string;
   status?: string;
+  achievement?: string;
+  latency?: string;
+  linesOfCode?: string;
+  keyChallenge?: string;
+  whyItMatters?: string;
+}
+
+export interface QuickStatData {
+  label: string;
+  value: string;
+  icon: string;
+}
+
+export interface DebugProblemData {
+  emoji: string;
+  title: string;
+  timeSpent: string;
+  severity: 'HIGH' | 'MEDIUM' | 'LOW';
+  whatHappened: string;
+  howFixed: string;
+  code?: string;
+  learning: string;
+}
+
+export interface MetricGroupData {
+  title: string;
+  icon: string;
+  rows: { label: string; value: string }[];
+}
+
+export interface CompetitorData {
+  name: string;
+  price: string;
+  note: string;
+}
+
+export interface CTAAudienceData {
+  audience: string;
+  message: string;
 }
 
 export interface ComparisonAspectData {

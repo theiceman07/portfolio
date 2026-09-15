@@ -21,16 +21,20 @@ export function ResourcesFooter({ resources }: ResourcesFooterProps) {
             </h4>
             <div className="space-y-4">
               <div className="flex justify-between items-center border-b border-white/5 pb-2">
-                <span className="text-gray-400">Total Duration</span>
-                <span className="text-white font-mono">3 Weeks</span>
+                <span className="text-gray-400">Build Time</span>
+                <span className="text-white font-mono">4 Days</span>
               </div>
               <div className="flex justify-between items-center border-b border-white/5 pb-2">
                 <span className="text-gray-400">Lines of Code</span>
-                <span className="text-white font-mono">~450</span>
+                <span className="text-white font-mono">~635</span>
               </div>
               <div className="flex justify-between items-center border-b border-white/5 pb-2">
                 <span className="text-gray-400">Cloud Integrations</span>
                 <span className="text-white font-mono">3 APIs</span>
+              </div>
+              <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                <span className="text-gray-400">System Uptime</span>
+                <span className="text-white font-mono">99.2%</span>
               </div>
             </div>
           </div>

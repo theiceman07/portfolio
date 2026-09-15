@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Clock, Code, Wifi } from 'lucide-react';
+import { CheckCircle2, Clock, Code, Gauge, AlertTriangle, Sparkles } from 'lucide-react';
 
 import { ProjectOverviewCardData } from '@/types/iot';
 
@@ -46,17 +46,41 @@ export function ProjectOverviewCards({ overview }: ProjectOverviewCardsProps) {
               <h3 className="text-xl font-medium text-white mb-4 group-hover:text-accent transition-colors">
                 {card.title}
               </h3>
-              
-              <div className="space-y-3">
+
+              {card.achievement && (
+                <p className="text-sm text-gray-300 mb-4 leading-relaxed">{card.achievement}</p>
+              )}
+
+              <div className="space-y-3 mb-4">
                 <div className="flex items-center gap-3 text-sm text-gray-400">
-                  <Code className="w-4 h-4" />
+                  <Code className="w-4 h-4 shrink-0" />
                   <span>{card.tech || card.technology}</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-gray-400">
-                  <Clock className="w-4 h-4" />
+                  <Clock className="w-4 h-4 shrink-0" />
                   <span>{card.duration || card.complexity}</span>
                 </div>
+                {card.latency && (
+                  <div className="flex items-center gap-3 text-sm text-gray-400">
+                    <Gauge className="w-4 h-4 shrink-0" />
+                    <span>{card.latency}{card.linesOfCode ? ` · ${card.linesOfCode} lines` : ''}</span>
+                  </div>
+                )}
               </div>
+
+              {card.keyChallenge && (
+                <div className="flex items-start gap-3 text-sm text-gray-400 mb-3 pt-3 border-t border-white/5">
+                  <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5 text-amber-400/70" />
+                  <span><span className="text-gray-500">Key challenge:</span> {card.keyChallenge}</span>
+                </div>
+              )}
+
+              {card.whyItMatters && (
+                <div className="flex items-start gap-3 text-sm text-gray-300">
+                  <Sparkles className="w-4 h-4 shrink-0 mt-0.5 text-accent" />
+                  <span>{card.whyItMatters}</span>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>

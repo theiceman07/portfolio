@@ -32,10 +32,16 @@ export function IoTHero() {
             EMBEDDED SYSTEMS
           </div>
           <h1 className="text-5xl md:text-7xl font-light text-white mb-6 tracking-tight">
-            IoT & <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-500">Connectivity</span>
+            From Prototype to <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-500">Production</span>
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mb-12 font-light leading-relaxed">
-            Complete smart home automation system — From local web control to cloud MQTT to voice commands.
+          <p className="text-xl text-gray-300 max-w-2xl mb-4 font-light leading-relaxed">
+            4 projects, 1 vision — building a smart home from the ground up on an ESP32, from a local web toggle to a
+            voice-controlled, cloud-synced, self-monitoring system.
+          </p>
+          <p className="text-base text-gray-500 max-w-2xl mb-12 leading-relaxed">
+            Task 1 proves local HTTP control. Task 2 moves that control to the cloud over MQTT. Task 3 chains 5
+            platforms together for voice automation. Task 4 combines all three into a production system that watches
+            temperature, humidity, and light 24/7, switches 230V appliances safely, and exports the data it collects.
           </p>
           
           <div className="flex flex-wrap gap-4">

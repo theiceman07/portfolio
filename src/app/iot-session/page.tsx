@@ -1,10 +1,14 @@
 import { IoTHero } from "@/components/sections/iot/IoTHero";
+import { QuickStats } from "@/components/sections/iot/QuickStats";
 import { ProjectOverviewCards } from "@/components/sections/iot/ProjectOverviewCards";
 import TaskSection from "@/components/sections/iot/TaskSection";
+import { DebuggingJourney } from "@/components/sections/iot/DebuggingJourney";
 import { ComparisonMatrix } from "@/components/sections/iot/ComparisonMatrix";
+import { EngineeringMetrics } from "@/components/sections/iot/EngineeringMetrics";
+import { BusinessContext } from "@/components/sections/iot/BusinessContext";
 import { FeatureGrid } from "@/components/sections/iot/FeatureGrid";
 import { ResourcesFooter } from "@/components/sections/iot/ResourcesFooter";
-import { iotContent } from "@/data/iot-content";
+import { iotContent, quickStats, debuggingJourney, engineeringMetrics, competitors, ctaAudiences } from "@/data/iot-content";
 import { task4Content } from "@/data/task4-content";
 import { mapProjectOverviewCard, mapTaskData } from "@/utils/mapIoTData";
 
@@ -29,14 +33,22 @@ export default function IoTPortfolio() {
   return (
     <div className="min-h-screen relative z-10 selection:bg-accent/30 selection:text-white">
       <IoTHero />
-      
+
+      <QuickStats stats={quickStats} />
+
       <ProjectOverviewCards overview={overview} />
 
       {allTasks.map((task) => (
         <TaskSection key={task.id} task={task} />
       ))}
-      
+
+      <DebuggingJourney problems={debuggingJourney} />
+
       <ComparisonMatrix data={comparison} />
+
+      <EngineeringMetrics groups={engineeringMetrics} />
+
+      <BusinessContext competitors={competitors} ctas={ctaAudiences} />
 
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
