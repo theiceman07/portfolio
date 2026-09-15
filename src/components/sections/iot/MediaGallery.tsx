@@ -19,14 +19,13 @@ export function MediaGallery({ images, videoSrc, videoCaption }: MediaGalleryPro
     <div className="space-y-6 my-8">
       {videoSrc && (
         <div className="relative group rounded-xl overflow-hidden border border-white/10 bg-black/40">
-          <div className="aspect-video w-full relative">
+          <div className="aspect-video w-full relative bg-black/60">
             <video
               className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity"
               src={videoSrc}
               muted
               playsInline
-              loop
-              autoPlay
+              preload="none"
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <button
@@ -110,7 +109,7 @@ export function MediaGallery({ images, videoSrc, videoCaption }: MediaGalleryPro
                 className="w-full h-full"
                 src={videoSrc}
                 controls
-                autoPlay
+                preload="metadata"
               />
             </div>
           </motion.div>

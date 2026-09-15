@@ -43,18 +43,20 @@ export default function TaskSection({ task }: TaskSectionProps) {
               </ul>
             </div>
             
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-black/40"
             >
-              <Image 
-                src={task.introImage.src} 
+              <Image
+                src={task.introImage.src}
                 alt={task.introImage.caption}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                loading="lazy"
+                quality={80}
               />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent">
                 <p className="text-sm text-gray-300">{task.introImage.caption}</p>

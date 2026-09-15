@@ -33,6 +33,7 @@ function ComponentCard({ component }: { component: HardwareComponentData }) {
               alt={photo.altText}
               className="w-full h-full object-contain p-4"
               loading="lazy"
+              decoding="async"
             />
             {component.photos.length > 1 && (
               <>
