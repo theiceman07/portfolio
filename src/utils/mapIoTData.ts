@@ -18,9 +18,8 @@ export function mapTaskData(data: any): TaskData {
   const getSectionLabel = (id: string | number) => {
     const numId = Number(id);
     if (numId <= 3) return `TASK 0${numId}`;
-    if (numId === 4) return 'TASK 04.1 - Hardware';
-    if (numId === 5) return 'TASK 04.2 - Cloud';
-    if (numId === 6) return 'TASK 04.3 - Dashboard';
+    if (numId === 4) return 'TASK 04';
+    if (numId === 5) return 'TASK 05';
     return `TASK ${numId}`;
   };
 
