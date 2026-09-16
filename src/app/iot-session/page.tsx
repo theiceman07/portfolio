@@ -12,6 +12,8 @@ import { iotContent, quickStats, debuggingJourney, engineeringMetrics, competito
 import { task4Content } from "@/data/task4-content";
 import { mapProjectOverviewCard, mapTaskData } from "@/utils/mapIoTData";
 
+export const revalidate = 60; // Revalidate every 60 seconds to avoid ISR cache issues
+
 export default function IoTPortfolio() {
   const allTasks = [
     ...iotContent.tasks,
