@@ -35,15 +35,16 @@ export function IoTHero() {
             From Prototype to <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-500">Production</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mb-4 font-light leading-relaxed">
-            4 projects, 1 vision — building a smart home from the ground up on an ESP32, from a local web toggle to a
-            voice-controlled, cloud-synced, self-monitoring system.
+            5 tasks, 1 vision — building a smart home from the ground up on an ESP32, from a local web toggle to a
+            voice-controlled, cloud-synced, self-monitoring system with production-grade UI and complete Arduino integration.
           </p>
           <p className="text-base text-gray-500 max-w-2xl mb-12 leading-relaxed">
             Task 1 proves local HTTP control. Task 2 moves that control to the cloud over MQTT. Task 3 chains 5
-            platforms together for voice automation. Task 4 combines all three into a production system that watches
-            temperature, humidity, and light 24/7, switches 230V appliances safely, and exports the data it collects.
+            platforms together for voice automation. Task 4 builds the web dashboard UI/UX. Task 5 integrates all Arduino
+            coding, component connections, and the complete working system that watches temperature, humidity, and light
+            24/7, switches 230V appliances safely, and exports the data it collects.
           </p>
-          
+
           <div className="flex flex-wrap gap-4">
             <button onClick={() => scrollTo('task1')} className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors font-medium">
               Task 1: Web Control
@@ -55,7 +56,10 @@ export function IoTHero() {
               Task 3: Voice Control
             </button>
             <button onClick={() => scrollTo('4')} className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors font-medium">
-              Task 4: Forge Smart Home
+              Task 4: Dashboard UI
+            </button>
+            <button onClick={() => scrollTo('5')} className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors font-medium">
+              Task 5: Arduino Integration
             </button>
           </div>
         </motion.div>
