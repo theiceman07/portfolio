@@ -61,7 +61,7 @@ export const task4Content = {
       gradient: "from-purple-600 to-pink-600",
 
       intro: {
-        description: "The user experience: can five APIs feel like one seamless app? Users see real-time temperature/humidity/light cards, a smooth bulb toggle, a manual/automatic mode selector, a light-sensitivity slider, a 50-row historical data table, and one-click CSV export — updating live every 2 seconds. What they don't see is the complexity underneath: Firebase real-time listeners keeping every card in sync, state management that distinguishes a manual toggle from an automatic one, and responsive CSS tested across four breakpoints. It's a responsive 3-page app (Landing, Login/Signup, Dashboard) built in vanilla HTML/CSS/JavaScript and hosted on **Firebase Hosting**, using the Firebase JavaScript SDK (`firebase/database`, `firebase/auth`) for data and identity. Great engineering is invisible — users only care that the bulb turns on when they click, that automatic mode is reliable, and that they can export their own data. Shipping a version without transition animations first (it felt broken) and then adding them back (it felt instant) taught me that a 1-second response with feedback reads faster than a 200ms response without it.",
+        description: "The user experience: can five APIs feel like one seamless app? Users see real-time temperature/humidity/light cards, a smooth bulb toggle, a manual/automatic mode selector, a light-sensitivity slider, a 50-row historical data table, and one-click CSV export — updating live every 2 seconds. What they don't see is the complexity underneath: Firebase real-time listeners keeping every card in sync, state management that distinguishes a manual toggle from an automatic one, and responsive CSS tested across four breakpoints. It's a responsive 3-page app (Landing, Login/Signup, Dashboard) built in vanilla HTML/CSS/JavaScript and hosted on **Firebase Hosting**, using the Firebase JavaScript SDK (`firebase/database`, `firebase/auth`) for data and identity. Great engineering is invisible — users only care that the bulb turns on when they click, that automatic mode is reliable, and that they can export their own data. Shipping a version without transition animations first (it felt broken) and then adding them back (it felt instant) taught me that a 1-second response with feedback reads faster than a 200ms response without it.\n\n**Cloud computing, in my own words:** instead of running my own server, I rent compute and storage from someone else's data center and pay only for what I use. That spectrum breaks into four layers depending on how much is managed for you: **IaaS** (Infrastructure-as-a-Service — you get raw virtual machines and networking, e.g. AWS EC2, and manage the OS yourself), **PaaS** (Platform-as-a-Service — you get a managed runtime to deploy code onto, e.g. Heroku or Vercel, without touching servers), **SaaS** (Software-as-a-Service — a finished product you use through a browser, e.g. Gmail), and **BaaS** (Backend-as-a-Service — pre-built backend building blocks like a database, auth, and file storage that you wire into your own frontend, which is exactly what Firebase is here). A **cloud platform** is simply the vendor's collection of these managed services (compute, storage, databases, auth) reachable over the internet instead of hardware I own. The **database** in this project — Firebase's Realtime Database — is just a structured, queryable store for the sensor readings and settings, kept in sync across every connected client automatically. **Authentication** answers \"who are you?\" (Firebase Auth verifying an email/password or Google sign-in); **authorization** answers \"what are you allowed to do?\" (in this app, every authenticated user reads/writes their own device's data — the login system exists so a stranger can't toggle my bulb or see my sensor history).",
         learningObjectives: [
           "Build a full-stack web app with user authentication and session persistence",
           "Drive real-time UI updates from Firebase listeners instead of polling",
@@ -136,7 +136,11 @@ export const task4Content = {
           { src: "/media/task4/photos/Screenshot (517).png", caption: "Complete dashboard showing all sensor data and controls" },
           { src: "/media/task4/photos/Screenshot (518).png", caption: "Responsive mobile view of dashboard" },
           { src: "/media/task4/photos/Screenshot (519).png", caption: "Login/Signup page with email and Google Sign-In" },
-          { src: "/media/task4/photos/Screenshot (520).png", caption: "Historical sensor data table with 50 rows" }
+          { src: "/media/task4/photos/Screenshot (520).png", caption: "Historical sensor data table with 50 rows" },
+          { src: "/media/task4/photos/firebase-realtime-database.png", caption: "Firebase Realtime Database console showing the /sensorData tree — bulbState, humidity, ldr, mode, temperature, and timestamp fields exactly as pushed by the ESP32" },
+          { src: "/media/task4/photos/dashboard-history-table.png", caption: "Dashboard's Recent Readings table with Export CSV button, matching the Firebase record" },
+          { src: "/media/task4/photos/csv-export-download-proof.png", caption: "CSV export in progress — forge_data_2026-09-23.csv downloading from the live forge-iot-a3a78.web.app dashboard" },
+          { src: "/media/task4/photos/csv-export-opened-in-excel.png", caption: "Downloaded CSV opened in Excel, confirming it contains the recorded Timestamp, Temperature, Humidity, Light, Bulb State, and Mode columns" }
         ],
         video: "/media/task4/videos/t4.mp4",
         videoCaption: "Dashboard walkthrough: real-time sensors, manual toggle, automatic mode switch, threshold slider, CSV export"
@@ -398,7 +402,8 @@ ESP32 receives command ✓`,
           { src: "/media/task4/photos/Screenshot (511).png", caption: "ESP32 with DHT11 and LDR modules on breadboard" },
           { src: "/media/task4/photos/Screenshot (512).png", caption: "5V relay module with mains power connections" },
           { src: "/media/task4/photos/Screenshot (513).png", caption: "DHT11 and LDR sensors connected via GPIO" },
-          { src: "/media/task4/photos/Screenshot (514).png", caption: "Full hardware setup with relay, sensors, and ESP32" }
+          { src: "/media/task4/photos/Screenshot (514).png", caption: "Full hardware setup with relay, sensors, and ESP32" },
+          { src: "/media/task4/photos/firebase-realtime-database.png", caption: "Firebase log data: each ESP32 push creates a timestamped record with bulbState, humidity, ldr, mode, and temperature under /sensorData" }
         ],
         video: "/media/task4/videos/t4.mp4",
         videoCaption: "Complete system demo: sensor readings, Firebase sync, relay control, dashboard updates"
@@ -582,6 +587,14 @@ Relay: ON`,
         {
           title: "Flat Firebase Schema",
           description: "Separate time-series (/sensorData), state (/appliances), and config (/settings). Avoid deep nesting which slows queries."
+        },
+        {
+          title: "Limitations of the Current Prototype",
+          description: "The LDR threshold is set manually and doesn't auto-calibrate to a room's baseline lighting, so moving the sensor to a new room means re-tuning it. DHT11 refreshes only every 2 seconds and has ±2°C factory accuracy, so it can't catch fast transients. There's no per-device access control — any authenticated account can control the one ESP32 wired to it, and Firebase's free-tier bandwidth caps would need addressing before running multiple units at scale."
+        },
+        {
+          title: "Possible Future Improvements",
+          description: "Auto-calibrate the LDR threshold from a rolling day/night baseline instead of a fixed value. Swap the DHT11 for a DHT22/SHT31 for better accuracy and faster sampling. Add push notifications (via Firebase Cloud Messaging) for threshold breaches, a chart of historical sensor trends alongside the existing table, and per-user device scoping so one Firebase project can safely serve multiple households."
         }
       ]
     }
@@ -669,6 +682,7 @@ Relay: ON`,
   ],
 
   resources: [
+    { type: "Code", title: "Task 4 & 5 Source (task4-content.ts)", url: "https://github.com/theiceman07/portfolio/blob/main/src/data/task4-content.ts" },
     { type: "Datasheet", title: "ESP32 Technical Reference", url: "https://www.espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf" },
     { type: "Datasheet", title: "DHT11 Sensor Datasheet", url: "https://datasheetspdf.com/pdf/DHT11" },
     { type: "Documentation", title: "Firebase Realtime Database Docs", url: "https://firebase.google.com/docs/database" },

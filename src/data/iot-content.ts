@@ -917,11 +917,9 @@ Relay energized, NO contact closed
     ]
   },
   resources: [
-    { type: "Datasheet", title: "Project Documentation PDF", url: "#" },
-    { type: "Datasheet", title: "ESP32 Datasheet", url: "#" },
-    { type: "Datasheet", title: "DHT11 Specifications", url: "#" },
-    { type: "Code", title: "Download Task 1 (.zip)", url: "#" },
-    { type: "Code", title: "Download Task 2 (.zip)", url: "#" },
-    { type: "Code", title: "Download Task 3 (.zip)", url: "#" }
+    { type: "Code", title: "View Full Source Repository (GitHub)", url: "https://github.com/theiceman07/portfolio" },
+    { type: "Code", title: "Tasks 1–3 Source (iot-content.ts)", url: "https://github.com/theiceman07/portfolio/blob/main/src/data/iot-content.ts" },
+    { type: "Datasheet", title: "ESP32 Technical Reference Manual", url: "https://www.espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf" },
+    { type: "Datasheet", title: "DHT11 Sensor Datasheet", url: "https://datasheetspdf.com/pdf/DHT11" }
   ]
 };

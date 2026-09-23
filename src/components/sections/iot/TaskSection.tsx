@@ -14,6 +14,18 @@ interface TaskSectionProps {
   task: TaskData;
 }
 
+function boldMarkdown(text: string) {
+  return text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+
+function renderMarkdownParagraphs(text: string) {
+  return text.split(/\n\n+/).map(boldMarkdown);
+}
+
+function renderMarkdownInline(text: string) {
+  return boldMarkdown(text).replace(/\n/g, '<br/>');
+}
+
 export default function TaskSection({ task }: TaskSectionProps) {
   return (
     <section id={task.id} className="pt-24 pb-12 scroll-mt-20">
@@ -31,7 +43,9 @@ export default function TaskSection({ task }: TaskSectionProps) {
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="prose prose-invert prose-lg text-gray-300">
-              <p>{task.description}</p>
+              {renderMarkdownParagraphs(task.description).map((para, i) => (
+                <p key={i} dangerouslySetInnerHTML={{ __html: para }} />
+              ))}
               <h3 className="text-white mt-8 mb-4 font-medium text-xl">Learning Objectives</h3>
               <ul className="space-y-2">
                 {task.learningObjectives.map((obj, i) => (
@@ -76,7 +90,7 @@ export default function TaskSection({ task }: TaskSectionProps) {
                 <div className="p-6 rounded-xl border border-white/10 bg-black/20 mt-4">
                   <h4 className="text-lg font-medium text-white mb-4">{spec.description}</h4>
                   <div className="prose prose-invert max-w-none text-gray-300">
-                    <div dangerouslySetInnerHTML={{ __html: spec.content.replace(/\n/g, '<br/>') }} />
+                    <div dangerouslySetInnerHTML={{ __html: renderMarkdownInline(spec.content) }} />
                   </div>
                 </div>
               )
@@ -130,7 +144,7 @@ export default function TaskSection({ task }: TaskSectionProps) {
         <div className="mb-16">
           <h3 className="text-2xl font-light text-white mb-6">Implementation Details</h3>
           <div className="prose prose-invert mb-8 text-gray-300 max-w-none">
-            <div dangerouslySetInnerHTML={{ __html: task.galleryExplanation.replace(/\n/g, '<br/>') }} />
+            <div dangerouslySetInnerHTML={{ __html: renderMarkdownInline(task.galleryExplanation) }} />
           </div>
           <MediaGallery 
             images={task.gallery} 
