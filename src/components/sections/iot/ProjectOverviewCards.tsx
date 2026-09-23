@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Clock, Code, Gauge, AlertTriangle, Sparkles } from 'lucide-react';
+import { CheckCircle2, Code, Gauge, AlertTriangle, Sparkles } from 'lucide-react';
 
 import { ProjectOverviewCardData } from '@/types/iot';
 
@@ -55,10 +55,6 @@ export function ProjectOverviewCards({ overview }: ProjectOverviewCardsProps) {
                 <div className="flex items-center gap-3 text-sm text-gray-400">
                   <Code className="w-4 h-4 shrink-0" />
                   <span>{card.tech || card.technology}</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-gray-400">
-                  <Clock className="w-4 h-4 shrink-0" />
-                  <span>{card.duration || card.complexity}</span>
                 </div>
                 {card.latency && (
                   <div className="flex items-center gap-3 text-sm text-gray-400">
