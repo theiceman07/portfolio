@@ -315,9 +315,9 @@ export const protosemUpdates = [
     href: "/iot-session",
     linkLabel: "View IoT Session Details"
   },
-  { id: "week-8", title: "Week 8: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "design", date: "Week 8" },
-  { id: "week-9", title: "Week 9: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "testing", date: "Week 9" },
-  { id: "week-10", title: "Week 10: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "research", date: "Week 10" },
+  { id: "week-8", title: "Week 8: ROS & Differential Bot Design", subtitle: "Attended a Robotic Operating System (ROS) session and installed Ubuntu via Oracle VirtualBox. Designed a differential bot (2 main wheels, 1 castor wheel) in Fusion 360, exported it to Ubuntu, and used RViz to check dimensions and positions before the session was interrupted.", type: "design", date: "Week 8" },
+  { id: "week-9", title: "Week 9: Smart India Hackathon", subtitle: "Allocated for Smart India Hackathon's first and second reviews, followed by participating in a 36-hour hackathon.", type: "development", date: "Week 9" },
+  { id: "week-10", title: "Week 10: AI & Agentic Workflows (Asadi Group)", subtitle: "Special week-long session for the Asadi group. Learned efficient token usage, reinforcement learning, model training, fine-tuning, LangChain, LangSmith, and LangGraph. Concluded by building a SaaS product powered by 20+ agents and an LLM judge, validated using LangSmith dashboards.", type: "development", date: "Week 10" },
   { id: "week-11", title: "Week 11: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "development", date: "Week 11" },
   { id: "week-12", title: "Week 12: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "design", date: "Week 12" },
   { id: "week-13", title: "Week 13: In Progress", subtitle: "More updates are coming soon. The prototype development journey continues...", type: "testing", date: "Week 13" },
