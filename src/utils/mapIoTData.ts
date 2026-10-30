@@ -63,6 +63,10 @@ export function mapTaskData(data: any): TaskData {
       title: l.title,
       points: l.points || [l.description]
     })),
-    componentsGallery: data.componentsGallery || undefined
+    componentsGallery: data.componentsGallery || undefined,
+    conceptNotes: data.conceptNotes,
+    testScenarios: data.testScenarios,
+    problemsSolved: data.problemsSolved,
+    reflection: data.reflection
   };
 }

@@ -8,7 +8,7 @@ import { Tabs, Accordion, CodeBlock } from './InteractiveElements';
 import { MediaGallery } from './MediaGallery';
 import { HardwareGallery } from './HardwareGallery';
 import { FeatureGrid } from './FeatureGrid';
-import { CheckCircle2, Activity, Terminal } from 'lucide-react';
+import { CheckCircle2, Activity, Terminal, AlertTriangle, Wrench } from 'lucide-react';
 
 interface TaskSectionProps {
   task: TaskData;
@@ -78,6 +78,24 @@ export default function TaskSection({ task }: TaskSectionProps) {
             </motion.div>
           </div>
         </div>
+
+        {/* Key Concepts */}
+        {task.conceptNotes && task.conceptNotes.length > 0 && (
+          <div className="mb-16">
+            <h3 className="text-2xl font-light text-white mb-6">Key Concepts</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {task.conceptNotes.map((note, i) => (
+                <div key={i} className="p-6 rounded-xl border border-white/10 bg-black/20">
+                  <h4 className="text-lg font-medium text-white mb-3">{note.title}</h4>
+                  <div
+                    className="prose prose-invert max-w-none text-gray-300 text-sm"
+                    dangerouslySetInnerHTML={{ __html: renderMarkdownInline(note.content) }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Hardware & Components */}
         <div className="mb-16">
@@ -217,6 +235,57 @@ export default function TaskSection({ task }: TaskSectionProps) {
           />
         </div>
 
+        {/* Tested Under Different Conditions */}
+        {task.testScenarios && task.testScenarios.length > 0 && (
+          <div className="mb-16">
+            <h3 className="text-2xl font-light text-white mb-6">Tested Under Different Conditions</h3>
+            <div className="overflow-x-auto rounded-xl border border-white/10 bg-black/20">
+              <table className="w-full text-left text-sm text-gray-300">
+                <thead className="bg-white/5 text-gray-200">
+                  <tr>
+                    <th className="px-6 py-4 font-medium">Condition</th>
+                    <th className="px-6 py-4 font-medium">Expected</th>
+                    <th className="px-6 py-4 font-medium">Observed</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {task.testScenarios.map((t, i) => (
+                    <tr key={i} className="hover:bg-white/5 transition-colors align-top">
+                      <td className="px-6 py-4 font-medium text-white">{t.condition}</td>
+                      <td className="px-6 py-4">{t.expected}</td>
+                      <td className="px-6 py-4">{t.result}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* Problems Encountered & Solutions */}
+        {task.problemsSolved && task.problemsSolved.length > 0 && (
+          <div className="mb-16">
+            <h3 className="text-2xl font-light text-white mb-6">Problems Encountered & How They Were Solved</h3>
+            <div className="space-y-4">
+              {task.problemsSolved.map((p, i) => (
+                <div key={i} className="p-6 rounded-xl border border-white/10 bg-black/20">
+                  <div className="flex items-start gap-3 mb-3">
+                    <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                    <h4 className="text-lg font-medium text-white">{p.problem}</h4>
+                  </div>
+                  <p className="text-sm text-gray-400 mb-3 pl-8">
+                    <span className="text-gray-300 font-medium">Cause: </span>{p.cause}
+                  </p>
+                  <div className="flex items-start gap-3 pl-8">
+                    <Wrench className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <p className="text-sm text-gray-300">{p.solution}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Key Learnings */}
         <div className="mb-16">
           <h3 className="text-2xl font-light text-white mb-6">Key Learnings</h3>
@@ -229,7 +298,19 @@ export default function TaskSection({ task }: TaskSectionProps) {
             columns={3}
           />
         </div>
-        
+
+        {/* Reflection */}
+        {task.reflection && (
+          <div className="mb-16">
+            <h3 className="text-2xl font-light text-white mb-6">Reflection</h3>
+            <div className="p-6 rounded-xl border border-white/10 bg-black/20 prose prose-invert max-w-none text-gray-300">
+              {renderMarkdownParagraphs(task.reflection).map((para, i) => (
+                <p key={i} dangerouslySetInnerHTML={{ __html: para }} />
+              ))}
+            </div>
+          </div>
+        )}
+
       </div>
     </section>
   );

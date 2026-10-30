@@ -136,6 +136,7 @@ export const task4Content = {
           { src: "/media/task4/photos/Screenshot (517).png", caption: "Complete dashboard showing all sensor data and controls" },
           { src: "/media/task4/photos/Screenshot (518).png", caption: "Responsive mobile view of dashboard" },
           { src: "/media/task4/photos/Screenshot (519).png", caption: "Login/Signup page with email and Google Sign-In" },
+          { src: "/media/task4/photos/Screenshot (521).png", caption: "Authentication setup: Firebase console with Email/Password and Google sign-in providers enabled" },
           { src: "/media/task4/photos/Screenshot (520).png", caption: "Historical sensor data table with 50 rows" },
           { src: "/media/task4/photos/firebase-realtime-database.png", caption: "Firebase Realtime Database console showing the /sensorData tree — bulbState, humidity, ldr, mode, temperature, and timestamp fields exactly as pushed by the ESP32" },
           { src: "/media/task4/photos/dashboard-history-table.png", caption: "Dashboard's Recent Readings table with Export CSV button, matching the Firebase record" },
@@ -280,7 +281,56 @@ ESP32 receives command ✓`,
           title: "Data Export for Users",
           description: "CSV export empowers users to take their data into spreadsheets for analysis and compliance reporting."
         }
-      ]
+      ],
+
+      conceptNotes: [
+        {
+          title: "Authentication: \"Who are you?\"",
+          content: "Authentication **proves identity**. In Forge, Firebase Auth checks an email + password or a Google account and returns a signed ID token for that user.\n\n- Happens **once, at login**\n- Answers: is this really arjun@…?\n- Fails with: wrong password / unknown account\n- Firebase pieces: signInWithEmailAndPassword(), signInWithPopup(GoogleAuthProvider)"
+        },
+        {
+          title: "Authorization: \"What are you allowed to do?\"",
+          content: "Authorization **grants permissions** to an identity that is already known. In Forge, it decides whether a user may read sensor data or write the bulb state.\n\n- Checked on **every request**\n- Answers: can this user toggle the bulb?\n- Fails with: PERMISSION_DENIED\n- Firebase pieces: Realtime Database security rules (e.g. \".write\": \"auth != null\") and the dashboard redirecting signed-out users to the login page"
+        },
+        {
+          title: "Why the difference matters here",
+          content: "A login screen alone is only authentication. Without authorization rules, anyone holding the database URL could still write /appliances/bulbState and switch a 230V bulb. Authentication tells the database who is asking; authorization tells it what that person may change."
+        },
+        {
+          title: "Real-world analogy",
+          content: "At an airport, showing your passport is **authentication** (you prove who you are). Your boarding pass is **authorization** (it lets you onto one specific flight, not every plane)."
+        }
+      ],
+
+      problemsSolved: [
+        {
+          problem: "Google Sign-In popup closed instantly with auth/unauthorized-domain",
+          cause: "The deployed Firebase Hosting domain wasn't in Firebase Auth's list of authorized domains, so Google refused the redirect.",
+          solution: "Added the hosting domain under Authentication → Settings → Authorized domains; sign-in worked on the live site."
+        },
+        {
+          problem: "Dashboard flashed for a split second before redirecting signed-out users",
+          cause: "The page rendered before Firebase finished restoring the session, so currentUser was briefly null.",
+          solution: "Waited for onAuthStateChanged() before showing anything, and kept a loading state until the auth check finished."
+        },
+        {
+          problem: "Sensor cards showed stale values until the page was refreshed",
+          cause: "The first version read the database once with get() instead of subscribing.",
+          solution: "Switched to onValue() listeners so cards update automatically every time the ESP32 pushes a new reading."
+        },
+        {
+          problem: "Bulb toggle felt unresponsive (~1–2 s before anything changed)",
+          cause: "The UI waited for the ESP32 round trip before updating, so the click had no visible feedback.",
+          solution: "Added an immediate transition/animation on click while the real state syncs. Perceived latency dropped even though the network time stayed the same."
+        },
+        {
+          problem: "Layout broke on mobile: cards overflowed and the table scrolled the whole page sideways",
+          cause: "Fixed-width cards and an unwrapped table.",
+          solution: "Rebuilt the grid with CSS Grid/Flexbox and mobile-first breakpoints, and wrapped the history table in its own horizontal scroll container."
+        }
+      ],
+
+      reflection: "Task 4 taught me that the dashboard is the product, as far as the user is concerned. Nobody sees the ESP32 or the relay. They only see whether the button responds and whether the numbers look alive. Shipping a version with no animations made this obvious: it was technically fast, but it felt broken.\n\nThe biggest conceptual shift was separating **authentication** from **authorization**. Adding a login page felt like \"security done\", but the database rules are what actually stop a stranger from switching the bulb. Working with Firebase as a Backend-as-a-Service also showed me the trade-off of managed cloud: I got hosting, a real-time database and login in hours instead of weeks, but I have to work within Firebase's rules, quotas and data model. Next time I would write the security rules first and build the UI around them."
     },
 
     {
@@ -403,6 +453,9 @@ ESP32 receives command ✓`,
           { src: "/media/task4/photos/Screenshot (512).png", caption: "5V relay module with mains power connections" },
           { src: "/media/task4/photos/Screenshot (513).png", caption: "DHT11 and LDR sensors connected via GPIO" },
           { src: "/media/task4/photos/Screenshot (514).png", caption: "Full hardware setup with relay, sensors, and ESP32" },
+          { src: "/media/task4/photos/Screenshot (515).png", caption: "Dashboard data visualization: live Temperature (23.0 °C), Humidity (60 %) and Ambient Light (1325) cards above the bulb and automation controls" },
+          { src: "/media/task4/photos/Screenshot (516).png", caption: "Dashboard in Automatic mode with the light threshold slider (3250) and the Recent Readings history table, with Export CSV" },
+          { src: "/media/task4/photos/Screenshot (522).png", caption: "Firebase Realtime Database: individual timestamped log entries (bulbState, humidity, ldr, mode, temperature, timestamp)" },
           { src: "/media/task4/photos/firebase-realtime-database.png", caption: "Firebase log data: each ESP32 push creates a timestamped record with bulbState, humidity, ldr, mode, and temperature under /sensorData" }
         ],
         video: "/media/task4/videos/t4.mp4",

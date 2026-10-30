@@ -354,7 +354,7 @@ export const iotContent: IoTContent = {
 #include <WebServer.h>
 
 const char* ssid = "Dell 1261";
-const char* password = "arjun2006";
+const char* password = "YOUR_WIFI_PASSWORD";
 
 WebServer server(80);
 const int ledPin = 2;
@@ -433,6 +433,28 @@ LED OFF`,
         videoCaption: "Full Task 1 demonstration showing web interface controlling LED in real-time"
       },
       componentsGallery: [esp32Component],
+      problemsSolved: [
+        {
+          problem: "Sketch upload failed with \"Failed to connect to ESP32: Timed out waiting for packet header\"",
+          cause: "The first USB cable was charge-only (no D+/D- data lines), so the board powered up but the Arduino IDE could never talk to it.",
+          solution: "Swapped to a proper data cable (checked by confirming it supports file transfer on a phone) and held the BOOT button while the upload started."
+        },
+        {
+          problem: "Browser showed \"This site can't be reached\" when opening the ESP32's page",
+          cause: "My laptop was on a different network from the ESP32, and I was typing an IP from an earlier session — the router had handed out a new address.",
+          solution: "Joined the same WiFi as the ESP32 and read the current IP from the Serial Monitor (\"IP Address: 192.168.55.25\") on every boot."
+        },
+        {
+          problem: "Serial Monitor printed garbage characters instead of the IP address",
+          cause: "Serial Monitor baud rate didn't match Serial.begin(115200) in the sketch.",
+          solution: "Set the Serial Monitor to 115200 baud; output became readable immediately."
+        },
+        {
+          problem: "Every button click reloaded the whole page and the LED status flickered",
+          cause: "The first version used plain links to the ON/OFF URLs, so each click was a full page navigation.",
+          solution: "Replaced the links with JavaScript fetch() calls to /api/on and /api/off so the page updates in place without reloading."
+        }
+      ],
       keyLearnings: [
         {
           title: "HTTP Protocol",
@@ -474,8 +496,8 @@ LED OFF`,
         "Reason about compounding network latency across each hop in the stack"
       ],
       introImage: {
-        src: "/media/iot/photos/task2_mqtt_relay/image1.png",
-        caption: "Adafruit IO dashboard showing real-time bulb control"
+        src: "/media/iot/photos/task2_mqtt_relay/hw-bulb-on.jpg",
+        caption: "The physical setup: the bulb switched ON from the Adafruit IO dashboard through the ESP32 and relay (still from demo video)"
       },
       hardwareSpecs: [
         {
@@ -533,13 +555,15 @@ LED OFF`,
         image: "/media/iot/hardware/task2-wiring.svg"
       },
       gallery: [
-        { src: "/media/iot/photos/task2_mqtt_relay/image2.png", caption: "Relay module closeup" },
-        { src: "/media/iot/photos/task2_mqtt_relay/image3.png", caption: "Bulb lit up" },
-        { src: "/media/iot/photos/task2_mqtt_relay/image4.png", caption: "Bulb off" },
-        { src: "/media/iot/photos/task2_mqtt_relay/image5.png", caption: "Wiring connections" },
-        { src: "/media/iot/photos/task2_mqtt_relay/image6.png", caption: "Dashboard setup" },
-        { src: "/media/iot/photos/task2_mqtt_relay/image7.png", caption: "MQTT broker configuration" },
-        { src: "/media/iot/photos/task2_mqtt_relay/image8.png", caption: "End-to-end testing" }
+        { src: "/media/iot/photos/task2_mqtt_relay/hw-bulb-off.jpg", caption: "Hardware setup (still from demo video): ESP32 and relay wired to the 230V bulb, bulb OFF before the dashboard toggle" },
+        { src: "/media/iot/photos/task2_mqtt_relay/hw-bulb-on.jpg", caption: "Hardware setup (still from demo video): one second later, after toggling ON in Adafruit IO, the relay closes and the bulb lights" },
+        { src: "/media/iot/photos/task2_mqtt_relay/hw-closeup.jpg", caption: "Close-up of the working prototype: ESP32 board and relay on the desk, bulb lit by the relay" },
+        { src: "/media/iot/photos/task2_mqtt_relay/image2.png", caption: "Adafruit IO: the \"esp bulb\" dashboard created for this task" },
+        { src: "/media/iot/photos/task2_mqtt_relay/image3.png", caption: "Adafruit IO: choosing the Toggle block for the dashboard" },
+        { src: "/media/iot/photos/task2_mqtt_relay/image4.png", caption: "Adafruit IO: connecting the toggle to the \"esp\" feed" },
+        { src: "/media/iot/photos/task2_mqtt_relay/image5.png", caption: "Adafruit IO: toggle block settings, sending ON / OFF as the button values" },
+        { src: "/media/iot/photos/task2_mqtt_relay/image6.png", caption: "Adafruit IO: the finished dashboard with the ON/OFF toggle" },
+        { src: "/media/iot/photos/task2_mqtt_relay/image7.png", caption: "Arduino IDE: the Task 2 sketch with Adafruit IO details (password and key redacted)" }
       ],
       galleryExplanation: "**MQTT Protocol Explained:**\n- HTTP vs MQTT Comparison\n- Publish-Subscribe model\n- Instant message delivery\n- Perfect for real-time control",
       codeBlock: {
@@ -547,7 +571,7 @@ LED OFF`,
         code: `#include <AdafruitIO_WiFi.h>
 
 #define WIFI_SSID "Dell 1261"
-#define WIFI_PASS "arjun2006"
+#define WIFI_PASS "YOUR_WIFI_PASSWORD"
 #define IO_USERNAME "johnwick221"
 #define IO_KEY "YOUR_ADAFRUIT_IO_KEY"
 
@@ -652,7 +676,7 @@ Relay de-energized, NO contact open
           { metric: "MQTT Latency", value: "<1000ms", status: "✅ Acceptable" }
         ],
         videoSrc: "/media/iot/videos/task2_demo.mp4",
-        videoCaption: "Complete Task 2 workflow - Dashboard toggle → Adafruit IO → ESP32 → Relay → Bulb ON/OFF"
+        videoCaption: "Working demonstration (4 s): the toggle is clicked in Adafruit IO on the laptop, and the 230V bulb on the left of the desk switches ON through the ESP32 and relay"
       },
       componentsGallery: [esp32Component, relayComponent],
       keyLearnings: [
@@ -696,8 +720,8 @@ Relay de-energized, NO contact open
         "Communicate a multi-protocol system's data flow clearly to other engineers"
       ],
       introImage: {
-        src: "/media/iot/photos/task3_voice_control/image1.png",
-        caption: "Bulb responding to voice commands via Google Assistant"
+        src: "/media/iot/photos/task3_voice_control/proto-bulb-on.jpg",
+        caption: "Working prototype: the bulb switches ON right after the voice command is spoken into the phone (still from demo video)"
       },
       hardwareSpecs: [
         {
@@ -745,32 +769,93 @@ Relay de-energized, NO contact open
         caption: "Complete Voice Control Architecture Flow"
       },
       gallery: [
-        { src: "/media/iot/photos/task3_voice_control/image2.png", caption: "Complete IoT System overview" },
-        { src: "/media/iot/photos/task3_voice_control/image3.png", caption: "IFTTT Applet Configuration" },
-        { src: "/media/iot/photos/task3_voice_control/image4.png", caption: "Webhook payload setup" },
-        { src: "/media/iot/photos/task3_voice_control/image5.png", caption: "Google Assistant responding" },
-        { src: "/media/iot/photos/task3_voice_control/image6.png", caption: "Adafruit IO feed updating" },
-        { src: "/media/iot/photos/task3_voice_control/image7.png", caption: "Successful execution" }
+        { src: "/media/iot/photos/task3_voice_control/proto-bulb-off.jpg", caption: "Working prototype (still from demo video): ESP32 on the laptop, blue relay module, and the bulb OFF, just before the voice command" },
+        { src: "/media/iot/photos/task3_voice_control/proto-bulb-on.jpg", caption: "Working prototype (still from demo video): after \"Okay Google, activate Bulb On\", the relay closes and the bulb lights" },
+        { src: "/media/iot/photos/task3_voice_control/proto-closeup.jpg", caption: "Prototype close-up: ESP32 (USB-powered from the laptop) wired to the relay module, which switches the bulb" },
+        { src: "/media/iot/photos/task3_voice_control/image1.png", caption: "IFTTT configuration: the \"Okay Google, activate Bulb On\" applet that sends data to the esp feed" },
+        { src: "/media/iot/photos/task3_voice_control/image2.png", caption: "IFTTT configuration (ON applet): If Google Assistant \"Activate scene\" → Then \"Send data to Adafruit IO\"" },
+        { src: "/media/iot/photos/task3_voice_control/image3.png", caption: "IFTTT configuration: action fields (feed_name, data) and the two connected services — Adafruit and Google Assistant" },
+        { src: "/media/iot/photos/task3_voice_control/image4.png", caption: "IFTTT configuration: the second applet, \"Okay Google, activate Bulb Off\" → send data to esp feed" },
+        { src: "/media/iot/photos/task3_voice_control/image5.png", caption: "IFTTT configuration (OFF applet): same trigger/action pair, sending OFF instead of ON" },
+        { src: "/media/iot/photos/task3_voice_control/image6.png", caption: "IFTTT applet activity log showing the applet connected and run during testing" },
+        { src: "/media/iot/photos/task2_mqtt_relay/image6.png", caption: "Adafruit IO dashboard: the \"esp bulb\" toggle block that mirrors every voice command" },
+        { src: "/media/iot/photos/task2_mqtt_relay/image1.png", caption: "Adafruit IO feed: the \"esp\" feed that IFTTT writes ON/OFF into and the ESP32 subscribes to" },
+        { src: "/media/iot/photos/task3_voice_control/image7.png", caption: "ESP32 Serial Monitor receiving \"Adafruit IO command: ON\" / \"OFF\" and switching the relay" }
       ],
-      galleryExplanation: "**Webhook Technology Deep Dive:**\n- Event-driven vs Polling\n- HTTP POST requests\n- Security considerations for API keys",
+      galleryExplanation: "**What the photos and screenshots show, in order:**\n- **Working prototype**: stills from the demo video, bulb OFF, then ON after the voice command\n- **IFTTT configuration** — two applets (Bulb On / Bulb Off), each triggered by a Google Assistant scene and sending ON or OFF to the Adafruit IO \"esp\" feed\n- **Adafruit IO dashboard & feed** — the toggle and feed the applets write to\n- **ESP32 Serial Monitor** — proof the board received the command over MQTT and switched the relay",
       codeBlock: {
-        language: "json",
-        code: `POST /api/v2/johnwick221/feeds/esp/data HTTP/1.1
-Host: io.adafruit.com
-Content-Type: application/json
-X-AIO-Key: YOUR_ADAFRUIT_IO_KEY
-Content-Length: 17
+        language: "cpp",
+        code: `// Task 3 ESP32 firmware: the board doesn't know (or care) that the
+// command started as a voice phrase. IFTTT writes ON/OFF to the
+// Adafruit IO "esp" feed, and this sketch receives it over MQTT.
+#include <AdafruitIO_WiFi.h>
 
-{"value":"ON"}
+#define WIFI_SSID   "YOUR_WIFI_SSID"
+#define WIFI_PASS   "YOUR_WIFI_PASSWORD"
+#define IO_USERNAME "johnwick221"
+#define IO_KEY      "YOUR_ADAFRUIT_IO_KEY"
 
-Response:
-HTTP/1.1 201 Created
-{
-  "id": "1234567890",
-  "value": "ON",
-  "created_at": "2026-09-12T15:30:45Z"
+AdafruitIO_WiFi io(IO_USERNAME, IO_KEY, WIFI_SSID, WIFI_PASS);
+AdafruitIO_Feed *esp = io.feed("esp");   // same feed IFTTT writes to
+
+#define RELAY_PIN 26
+#define RELAY_ON  HIGH
+#define RELAY_OFF LOW
+
+void handleESPMessage(AdafruitIO_Data *data) {
+  String command = data->toString();
+  command.trim();
+  command.toUpperCase();
+
+  Serial.println("================================");
+  Serial.print("Adafruit IO command: ");
+  Serial.println(command);
+
+  if (command == "ON") {
+    digitalWrite(RELAY_PIN, RELAY_ON);
+    Serial.println("BULB -> ON");
+  } else if (command == "OFF") {
+    digitalWrite(RELAY_PIN, RELAY_OFF);
+    Serial.println("BULB -> OFF");
+  } else {
+    Serial.println("Unknown command, ignored");
+  }
+  Serial.println("================================");
+}
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(RELAY_PIN, OUTPUT);
+  digitalWrite(RELAY_PIN, RELAY_OFF);     // fail safe: bulb OFF on boot
+
+  esp->onMessage(handleESPMessage);
+  io.connect();
+
+  while (io.status() < AIO_CONNECTED) {
+    Serial.print(".");
+    delay(500);
+  }
+  Serial.println("\\nSYSTEM READY - listening for voice commands");
+
+  esp->get();   // sync relay with the feed's last value after a reboot
+}
+
+void loop() {
+  io.run();     // keeps MQTT alive and reconnects if WiFi drops
 }`,
         collapsibleSections: [
+          {
+            title: "How the voice command reaches this code",
+            content: "Google Assistant matches the phrase → IFTTT applet runs → IFTTT's Adafruit action writes ON/OFF to the \"esp\" feed → Adafruit IO publishes that value over MQTT → handleESPMessage() runs on the ESP32. The firmware is the same subscriber pattern as Task 2; only the source of the feed value changed."
+          },
+          {
+            title: "Why esp->get() in setup()",
+            content: "If the ESP32 reboots, it asks Adafruit IO for the feed's last value so the relay matches whatever the last voice command was, instead of silently staying OFF."
+          },
+          {
+            title: "Equivalent HTTP request (what IFTTT sends to Adafruit IO)",
+            content: "POST https://io.adafruit.com/api/v2/johnwick221/feeds/esp/data with header X-AIO-Key and JSON body {\"value\":\"ON\"}. Adafruit IO replies 201 Created and republishes the value to MQTT subscribers."
+          },
           {
             title: "What is a Webhook?",
             content: "A webhook is an HTTP callback — a way for one service to automatically notify another service when something happens."
@@ -795,8 +880,46 @@ Relay energized, NO contact closed
           { metric: "Total Latency", value: "2-3s", status: "✅ Acceptable" }
         ],
         videoSrc: "/media/iot/videos/task3_demo.mp4",
-        videoCaption: "Full Task 3 demonstration showing voice command 'activate bulb on' turning on the light"
+        videoCaption: "Complete automation demo (44 s, phone filmed sideways): the voice command is spoken into the phone, IFTTT and Adafruit IO relay it to the ESP32, and the bulb at the bottom of the frame switches ON around 0:14 and is back OFF by 0:26 after the OFF command"
       },
+      testScenarios: [
+        { condition: "\"Hey Google, activate Bulb On\"", expected: "Feed → ON, relay clicks, bulb lights", result: "✅ Bulb ON in ~2–3 s; Serial shows \"BULB -> ON\"" },
+        { condition: "\"Hey Google, activate Bulb Off\"", expected: "Feed → OFF, relay releases, bulb off", result: "✅ Bulb OFF in ~2–3 s; Serial shows \"BULB -> OFF\"" },
+        { condition: "Same command twice in a row (ON, ON)", expected: "No change, no errors", result: "✅ Relay stays ON; second message logged and ignored safely" },
+        { condition: "Phrase not matching the scene name", expected: "Nothing should fire", result: "✅ Assistant replied it couldn't find the scene; feed unchanged" },
+        { condition: "ESP32 rebooted after an ON command", expected: "Relay restores last state", result: "✅ esp->get() pulled \"ON\" from the feed and re-energised the relay" },
+        { condition: "WiFi dropped and came back", expected: "MQTT reconnects without reflashing", result: "✅ io.run() reconnected; next voice command worked" },
+        { condition: "Voice command, then dashboard toggle", expected: "Both paths control the same bulb", result: "✅ Dashboard and voice stay in sync because both write to the same feed" },
+        { condition: "Several commands fired within a few seconds", expected: "Each command applied", result: "⚠️ Occasional IFTTT delay/skip from rate limiting; spacing commands fixed it" }
+      ],
+      problemsSolved: [
+        {
+          problem: "Google Assistant said \"OK\" but the bulb never turned on",
+          cause: "IFTTT was linked to a different Google account from the one on my phone's Assistant, so the scene existed in one account and the voice command ran in another.",
+          solution: "Re-linked the Google Assistant service in IFTTT using the same Google account as the phone, then re-created both applets."
+        },
+        {
+          problem: "IFTTT activity log showed the applet as \"Skipped\" during rapid testing",
+          cause: "IFTTT rate-limits free-tier applets when the same trigger fires repeatedly in a short window.",
+          solution: "Spaced test commands a few seconds apart and checked the IFTTT activity log before assuming the ESP32 was at fault."
+        },
+        {
+          problem: "Feed updated on Adafruit IO but the ESP32 didn't react",
+          cause: "The applet's feed name didn't exactly match the feed the sketch subscribes to (\"esp\"), so IFTTT created a new feed.",
+          solution: "Set the applet's feed_name to exactly \"esp\" and deleted the stray feed; the ESP32 started receiving commands immediately."
+        },
+        {
+          problem: "Commands like \"on\" or \" ON\" were ignored",
+          cause: "String comparison was case- and whitespace-sensitive.",
+          solution: "Added command.trim() and command.toUpperCase() before comparing, so any casing or stray spaces still match."
+        },
+        {
+          problem: "Voice-to-bulb delay felt broken (~3 s)",
+          cause: "Five hops (Assistant → IFTTT → Adafruit IO → MQTT → ESP32), each adding latency; IFTTT is the slowest.",
+          solution: "Measured each hop with timestamps, kept the ESP32 connection persistent with io.run(), and accepted 2–3 s as the cost of a no-code cloud chain."
+        }
+      ],
+      reflection: "This task changed how I think about IoT systems. The firmware was the easy part: it's the same 40-line MQTT subscriber from Task 2. The hard part was everything around it: making sure two Google accounts matched, that a feed name was spelled exactly the same in two places, and that a \"Skipped\" in an activity log meant rate limiting rather than a bug.\n\nI learned to debug a chain one link at a time: check IFTTT's log, then the Adafruit IO feed, then the Serial Monitor, then the relay. Each tool told me exactly where the message stopped. I also learned the trade-off of no-code automation. IFTTT got voice control working in an afternoon, but I gave up control over latency and reliability. In a real product I would replace it with a direct integration (Google Home's local SDK or Matter) and keep IFTTT for prototyping.",
       keyLearnings: [
         {
           title: "Multi-protocol Integration",

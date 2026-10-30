@@ -44,6 +44,21 @@ export interface TaskData {
     points: string[];
   }[];
   componentsGallery?: HardwareComponentData[];
+  conceptNotes?: {
+    title: string;
+    content: string;
+  }[];
+  testScenarios?: {
+    condition: string;
+    expected: string;
+    result: string;
+  }[];
+  problemsSolved?: {
+    problem: string;
+    cause: string;
+    solution: string;
+  }[];
+  reflection?: string;
 }
 
 export interface IoTContent {
